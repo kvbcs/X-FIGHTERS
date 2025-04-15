@@ -14,7 +14,10 @@ class Character {
 		this.magic = magic;
 		this.img = img;
 	}
-
+	select(id) {
+		selectedCharacters.unshift(this.character);
+		console.log(selectedCharacters);
+	}
 	attack(target) {
 		const damage = this.strength - target.defense;
 		target.health -= damage;
@@ -25,19 +28,19 @@ class Character {
 			console.log(`${target.name} is dead ! ${this.name} WINS !!!`);
 		}
 	}
-	heal(health, magic) {
-		console.log(`You healed ${health} points and lost ${magic} points !`);
-	}
-	block(name, health, defense) {
-		console.log(
-			`${name} blocks ${target.name}'s attack and lost ${health} health points !`
-		);
-	}
-	magicAttack(magic, health) {
-		console.log(
-			`Your magic did ${health} damage and you lost ${magic} points !`
-		);
-	}
+	// heal(health, magic) {
+	// 	console.log(`You healed ${health} points and lost ${magic} points !`);
+	// }
+	// block(name, health, defense) {
+	// 	console.log(
+	// 		`${name} blocks ${target.name}'s attack and lost ${health} health points !`
+	// 	);
+	// }
+	// magicAttack(magic, health) {
+	// 	console.log(
+	// 		`Your magic did ${health} damage and you lost ${magic} points !`
+	// 	);
+	// }
 }
 
 let playableCharacters = [
@@ -102,7 +105,7 @@ playableCharacters.forEach((character) => {
 	//Création et style d'éléments
 	div = document.createElement("div");
 	div.classList.add("character-div");
-	div.setAttribute("id", id);
+	div.setAttribute("id", character.id);
 
 	img = document.createElement("img");
 	img.src = character.img;
@@ -110,9 +113,21 @@ playableCharacters.forEach((character) => {
 	//Ajout des éléments
 	div.appendChild(img);
 	characterContainer.appendChild(div);
+
+	div.addEventListener("click", () => {
+		console.log(character);
+		addSelectCharcater(character);
+	});
 });
 
 playBtn.addEventListener("click", () => {
-	main.innerHTML=""
+	main.innerHTML = "";
 	console.log("allo");
 });
+
+const addSelectCharcater = (character) => {
+	selectedCharacters.unshift(character);
+	console.log(selectedCharacters);
+	alert(`You selected ${character.name}`);
+	
+};

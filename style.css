@@ -4,8 +4,8 @@
 	box-sizing: border-box;
 }
 
-.hidden{
-	display:none;
+.hidden {
+	display: none;
 }
 header {
 	background-color: black;
@@ -45,7 +45,6 @@ main {
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
-	
 }
 
 #characterContainer {
