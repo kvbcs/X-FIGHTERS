@@ -1,6 +1,6 @@
 let characterContainer = document.querySelector("#characterContainer");
 let selectedCharacters = [];
-let playBtn = document.querySelector("#playBtn");
+let startBtn = document.querySelector("#startBtn");
 let main = document.querySelector("main");
 let id = 1;
 let score = 0;
@@ -92,14 +92,23 @@ let playableCharacters = [
 		5,
 		"/assets/Skeleton/GIFS/Skeleton Idle.gif"
 	)),
-	(Skeleton = new Character(
+	(Mario = new Character(
 		id++,
-		"Skeleton",
+		"Mario",
 		1000,
 		20,
 		0,
 		5,
 		"https://i.pinimg.com/originals/f5/75/2c/f5752c7c9f03832209f0bb8b57214281.gif"
+	)),
+	(Sonic = new Character(
+		id++,
+		"Sonic",
+		1000,
+		20,
+		0,
+		5,
+		"https://media.tenor.com/oir5PjIye9sAAAAj/sonic.gif"
 	)),
 ];
 console.log(playableCharacters);
@@ -123,17 +132,25 @@ playableCharacters.forEach((character) => {
 	});
 });
 
-playBtn.addEventListener("click", () => {
+const addSelectCharacter = (character) => {
+	if (selectedCharacters.length >= 0) {
+		selectedCharacters = [];
+	}
+	selectedCharacters.unshift(character);
+	alert(`You selected ${character.name}`);
+	// Choix aléatoire d’un personnage dans le tableau
+	let randomIndex = Math.floor(Math.random() * playableCharacters.length);
+	let computerChoice = playableCharacters[randomIndex];
+
+	selectedCharacters.unshift(computerChoice);
+	alert(`Computer selected : ${computerChoice.name}`);
+	console.log(selectedCharacters);
+};
+
+startBtn.addEventListener("click", () => {
+	if (selectedCharacters.length <= 0) {
+		return alert("Please choose a fighter");
+	}
 	main.innerHTML = "";
 	console.log("allo");
 });
-
-const addSelectCharacter = (character) => {
-	selectedCharacters.unshift(character);
-	console.log(selectedCharacters);
-	alert(`You selected ${character.name}`);
-	let computerChoice = Math.floor(
-		Math.random() * playableCharacters.length + 1
-	);
-	console.log(computerChoice);
-};
