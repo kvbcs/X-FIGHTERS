@@ -1,7 +1,12 @@
-let characterContainer = document.querySelector("#character-container");
+let characterContainer = document.querySelector("#characterContainer");
+let selectedCharacters = [];
+let playBtn = document.querySelector("#playBtn");
+let main = document.querySelector("main");
+let id = 1;
 
 class Character {
-	constructor(name, health, strength, defense, magic, img) {
+	constructor(id, name, health, strength, defense, magic, img) {
+		this.id = id++;
 		this.name = name;
 		this.health = health;
 		this.strength = strength;
@@ -34,9 +39,11 @@ class Character {
 		);
 	}
 }
+
 let playableCharacters = [
 	(Skeleton = new Character(
-		"Skeleton",
+		id++,
+		"Skeleton1",
 		200,
 		20,
 		0,
@@ -44,7 +51,8 @@ let playableCharacters = [
 		"/assets/Skeleton/GIFS/Skeleton Idle.gif"
 	)),
 	(Skeleton = new Character(
-		"Skeleton",
+		id++,
+		"Skeleton2",
 		200,
 		20,
 		0,
@@ -52,7 +60,8 @@ let playableCharacters = [
 		"/assets/Skeleton/GIFS/Skeleton Idle.gif"
 	)),
 	(Skeleton = new Character(
-		"Skeleton",
+		id++,
+		"Skeleton3",
 		200,
 		20,
 		0,
@@ -60,7 +69,8 @@ let playableCharacters = [
 		"/assets/Skeleton/GIFS/Skeleton Idle.gif"
 	)),
 	(Skeleton = new Character(
-		"Skeleton",
+		id++,
+		"Skeleton4",
 		200,
 		20,
 		0,
@@ -68,7 +78,8 @@ let playableCharacters = [
 		"/assets/Skeleton/GIFS/Skeleton Idle.gif"
 	)),
 	(Skeleton = new Character(
-		"Skeleton",
+		id++,
+		"Skeleton5",
 		200,
 		20,
 		0,
@@ -76,7 +87,8 @@ let playableCharacters = [
 		"/assets/Skeleton/GIFS/Skeleton Idle.gif"
 	)),
 	(Skeleton = new Character(
-		"Skeleton",
+		id++,
+		"Skeleton6",
 		200,
 		20,
 		0,
@@ -84,22 +96,23 @@ let playableCharacters = [
 		"/assets/Skeleton/GIFS/Skeleton Idle.gif"
 	)),
 ];
+console.log(playableCharacters);
 
 playableCharacters.forEach((character) => {
+	//Création et style d'éléments
 	div = document.createElement("div");
 	div.classList.add("character-div");
+	div.setAttribute("id", id);
+
 	img = document.createElement("img");
 	img.src = character.img;
+
+	//Ajout des éléments
 	div.appendChild(img);
 	characterContainer.appendChild(div);
 });
-console.log(characterContainer);
 
-Ryu = new Character("Ryu", 100, 60, 30, 10);
-Ken = new Character("Ken", 100, 40, 20, 10);
-
-Ryu.attack(Ken);
-console.log(Ken.health);
-Ryu.attack(Ken);
-console.log(Ken.health);
-Ryu.attack(Ken);
+playBtn.addEventListener("click", () => {
+	main.innerHTML=""
+	console.log("allo");
+});
