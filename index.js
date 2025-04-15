@@ -1,3 +1,7 @@
+let playableCharacters = [
+	(Skeleton = new Character("Skeleton", 200, 20, 0, 5)),
+];
+
 class Character {
 	constructor(name, health, strength, defense, magic) {
 		this.name = name;
