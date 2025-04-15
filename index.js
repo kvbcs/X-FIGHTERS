@@ -3,6 +3,11 @@ let selectedCharacters = [];
 let playBtn = document.querySelector("#playBtn");
 let main = document.querySelector("main");
 let id = 1;
+let score = 0;
+let winCounter = 0;
+let lossCounter = 0;
+const audio = document.querySelector("audio");
+audio.volume = 0.2;
 
 class Character {
 	constructor(id, name, health, strength, defense, magic, img) {
@@ -14,10 +19,7 @@ class Character {
 		this.magic = magic;
 		this.img = img;
 	}
-	select(id) {
-		selectedCharacters.unshift(this.character);
-		console.log(selectedCharacters);
-	}
+
 	attack(target) {
 		const damage = this.strength - target.defense;
 		target.health -= damage;
@@ -44,10 +46,47 @@ class Character {
 }
 
 let playableCharacters = [
+	(Cat = new Character(id++, "Cat", 1000, 20, 0, 5, "/assets/cat.gif")),
+	(HollowKnight = new Character(
+		id++,
+		"Hollow Knight",
+		1000,
+		20,
+		0,
+		5,
+		"/assets/hollow-knight.gif"
+	)),
+	(DarkMage = new Character(
+		id++,
+		"Dark Mage",
+		1000,
+		20,
+		0,
+		5,
+		"/assets/dark-mage.gif"
+	)),
+	(Kratos = new Character(
+		id++,
+		"Kratos",
+		1000,
+		20,
+		0,
+		5,
+		"/assets/kratos.gif"
+	)),
+	(Goku = new Character(
+		id++,
+		"Son Goku",
+		1000,
+		100,
+		50,
+		100,
+		"/assets/goku.gif"
+	)),
 	(Skeleton = new Character(
 		id++,
-		"Skeleton1",
-		200,
+		"Skeleton",
+		1000,
 		20,
 		0,
 		5,
@@ -55,48 +94,12 @@ let playableCharacters = [
 	)),
 	(Skeleton = new Character(
 		id++,
-		"Skeleton2",
-		200,
+		"Skeleton",
+		1000,
 		20,
 		0,
 		5,
-		"/assets/Skeleton/GIFS/Skeleton Idle.gif"
-	)),
-	(Skeleton = new Character(
-		id++,
-		"Skeleton3",
-		200,
-		20,
-		0,
-		5,
-		"/assets/Skeleton/GIFS/Skeleton Idle.gif"
-	)),
-	(Skeleton = new Character(
-		id++,
-		"Skeleton4",
-		200,
-		20,
-		0,
-		5,
-		"/assets/Skeleton/GIFS/Skeleton Idle.gif"
-	)),
-	(Skeleton = new Character(
-		id++,
-		"Skeleton5",
-		200,
-		20,
-		0,
-		5,
-		"/assets/Skeleton/GIFS/Skeleton Idle.gif"
-	)),
-	(Skeleton = new Character(
-		id++,
-		"Skeleton6",
-		200,
-		20,
-		0,
-		5,
-		"/assets/Skeleton/GIFS/Skeleton Idle.gif"
+		"https://i.pinimg.com/originals/f5/75/2c/f5752c7c9f03832209f0bb8b57214281.gif"
 	)),
 ];
 console.log(playableCharacters);
@@ -116,7 +119,7 @@ playableCharacters.forEach((character) => {
 
 	div.addEventListener("click", () => {
 		console.log(character);
-		addSelectCharcater(character);
+		addSelectCharacter(character);
 	});
 });
 
@@ -125,9 +128,12 @@ playBtn.addEventListener("click", () => {
 	console.log("allo");
 });
 
-const addSelectCharcater = (character) => {
+const addSelectCharacter = (character) => {
 	selectedCharacters.unshift(character);
 	console.log(selectedCharacters);
 	alert(`You selected ${character.name}`);
-	
+	let computerChoice = Math.floor(
+		Math.random() * playableCharacters.length + 1
+	);
+	console.log(computerChoice);
 };
