@@ -25,14 +25,13 @@ button {
 	&:hover {
 		scale: 125%;
 		background-color: lightgreen;
-        color: black;
-        cursor: pointer;
+		color: black;
+		cursor: pointer;
 	}
 }
 
 main {
 	min-height: 90vh;
-	background-color: red;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
@@ -40,13 +39,35 @@ main {
 	padding: 20px;
 }
 
-#character-container{
-    background-color: blue;
-    width: 100%;
-    min-height: 10vh;
-    max-height: fit-content;
+#character-container {
+	width: 100%;
+	min-height: 10vh;
+	max-height: fit-content;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	gap: 20px;
 }
-
+.character-div {
+	background-color: black;
+	height: 15vh;
+	width: 40%;
+	object-fit: cover;
+	border-radius: 20px;
+	padding: 20px;
+	&:hover {
+		cursor: pointer;
+		scale: 125%;
+		background-color: gray;
+		transition: 0.2s ease-in-out;
+	}
+	&.character-div > img {
+		height: 100%;
+		width: 100%;
+	}
+}
 footer {
 	height: 20vh;
 	background-color: black;

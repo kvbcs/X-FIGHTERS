@@ -1,14 +1,13 @@
-let playableCharacters = [
-	(Skeleton = new Character("Skeleton", 200, 20, 0, 5)),
-];
+let characterContainer = document.querySelector("#character-container");
 
 class Character {
-	constructor(name, health, strength, defense, magic) {
+	constructor(name, health, strength, defense, magic, img) {
 		this.name = name;
 		this.health = health;
 		this.strength = strength;
 		this.defense = defense;
 		this.magic = magic;
+		this.img = img;
 	}
 
 	attack(target) {
@@ -35,6 +34,66 @@ class Character {
 		);
 	}
 }
+let playableCharacters = [
+	(Skeleton = new Character(
+		"Skeleton",
+		200,
+		20,
+		0,
+		5,
+		"/assets/Skeleton/GIFS/Skeleton Idle.gif"
+	)),
+	(Skeleton = new Character(
+		"Skeleton",
+		200,
+		20,
+		0,
+		5,
+		"/assets/Skeleton/GIFS/Skeleton Idle.gif"
+	)),
+	(Skeleton = new Character(
+		"Skeleton",
+		200,
+		20,
+		0,
+		5,
+		"/assets/Skeleton/GIFS/Skeleton Idle.gif"
+	)),
+	(Skeleton = new Character(
+		"Skeleton",
+		200,
+		20,
+		0,
+		5,
+		"/assets/Skeleton/GIFS/Skeleton Idle.gif"
+	)),
+	(Skeleton = new Character(
+		"Skeleton",
+		200,
+		20,
+		0,
+		5,
+		"/assets/Skeleton/GIFS/Skeleton Idle.gif"
+	)),
+	(Skeleton = new Character(
+		"Skeleton",
+		200,
+		20,
+		0,
+		5,
+		"/assets/Skeleton/GIFS/Skeleton Idle.gif"
+	)),
+];
+
+playableCharacters.forEach((character) => {
+	div = document.createElement("div");
+	div.classList.add("character-div");
+	img = document.createElement("img");
+	img.src = character.img;
+	div.appendChild(img);
+	characterContainer.appendChild(div);
+});
+console.log(characterContainer);
 
 Ryu = new Character("Ryu", 100, 60, 30, 10);
 Ken = new Character("Ken", 100, 40, 20, 10);
