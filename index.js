@@ -2,6 +2,7 @@ let characterContainer = document.querySelector("#characterContainer");
 let selectedCharacters = [];
 let startBtn = document.querySelector("#startBtn");
 let attackBtn = document.querySelector("#attackBtn");
+let healBtn = document.querySelector("#healBtn");
 let main = document.querySelector("main");
 let id = 1;
 let score = 0;
@@ -11,13 +12,13 @@ const audio = document.querySelector("audio");
 audio.volume = 0.2;
 
 class Character {
-	constructor(id, name, health, strength, defense, magic, img) {
+	constructor(id, name, img) {
 		this.id = id++;
 		this.name = name;
-		this.health = health;
-		this.strength = strength;
-		this.defense = defense;
-		this.magic = magic;
+		this.health = 1000;
+		this.strength = 100;
+		this.defense = 100;
+		this.magic = 100;
 		this.img = img;
 	}
 
@@ -30,12 +31,10 @@ class Character {
 			return alert(`${target.name} is dead ! ${this.name} WINS !!!`);
 		}
 		alert(
-			`${this.name} attacks, ${target.name} has lost ${this.strength} health points !`
+			`${this.name} attacks ! ${target.name} has lost ${this.strength} HEALTH !`
 		);
 	}
-	// heal(health, magic) {
-	// 	console.log(`You healed ${health} points and lost ${magic} points !`);
-	// }
+
 	// block(name, health, defense) {
 	// 	console.log(
 	// 		`${name} blocks ${target.name}'s attack and lost ${health} health points !`
@@ -47,70 +46,101 @@ class Character {
 	// 	);
 	// }
 }
+class Mage extends Character {
+	constructor(id, name, img) {
+		super(id, name, img);
+		this.id = id++;
+		this.name = name;
+		this.health = 500;
+		this.strength = 50;
+		this.defense = 50;
+		this.magic = 1000;
+		this.img = img;
+	}
+	heal() {
+		if (this.magic <= 0) {
+			return alert("You have no magic left !");
+		}
+		const healed = 150;
+		this.health += healed;
+		this.magic -= healed;
+		alert(`You healed ${healed} HEALTH and lost ${healed} MAGIC !`);
+	}
+}
+
+class Warrior extends Character {
+	constructor(id, name, img) {
+		super(id, name, img);
+		this.id = id++;
+		this.name = name;
+		this.health = 750;
+		this.strength = 150;
+		this.defense = 500;
+		this.magic = 0;
+		this.img = img;
+	}
+	heal() {
+		if (this.magic <= 0) {
+			return alert("You have no magic left !");
+		}
+		const healed = 150;
+		this.health += healed;
+		this.magic -= healed;
+		alert(`You healed ${healed} HEALTH and lost ${healed} MAGIC !`);
+	}
+}
+// class MagicSpells extends Character{
+// 	constructor(id, name) {
+// 		this.id = id++
+// 		this.name = name
+// 	}
+// 	healSpell() {
+
+// 	}
+// }
 
 let playableCharacters = [
-	(Cat = new Character(id++, "Cat", 100, 20, 0, 5, "/assets/cat.gif")),
+	(Cat = new Character(id++, "Cat", "/assets/cat.gif")),
 	(HollowKnight = new Character(
 		id++,
 		"Hollow Knight",
-		100,
-		20,
-		0,
-		5,
+
 		"/assets/hollow-knight.gif"
 	)),
-	(DarkMage = new Character(
+	(DarkMage = new Mage(
 		id++,
 		"Dark Mage",
-		100,
-		20,
-		0,
-		5,
+
 		"/assets/dark-mage.gif"
 	)),
-	(Kratos = new Character(
+	(Kratos = new Warrior(
 		id++,
 		"Kratos",
-		100,
-		20,
-		0,
-		5,
+
 		"/assets/kratos.gif"
 	)),
-	(Goku = new Character(
+	(Goku = new Warrior(
 		id++,
 		"Son Goku",
-		100,
-		100,
-		50,
-		100,
+
 		"/assets/goku.gif"
 	)),
-	(Skeleton = new Character(
+	(Skeleton = new Warrior(
 		id++,
 		"Skeleton",
-		100,
-		20,
-		0,
-		5,
+
 		"/assets/Skeleton/GIFS/Skeleton Idle.gif"
 	)),
 	(Mario = new Character(
 		id++,
 		"Mario",
-		100,
-		20,
-		0,
-		5,
+
 		"https://i.pinimg.com/originals/f5/75/2c/f5752c7c9f03832209f0bb8b57214281.gif"
 	)),
 	(Sonic = new Character(
 		id++,
 		"Sonic",
-		100,
-		20,
-		0,
-		5,
+
 		"https://media.tenor.com/oir5PjIye9sAAAAj/sonic.gif"
 	)),
 ];
@@ -160,13 +190,20 @@ startBtn.addEventListener("click", () => {
 	section.classList.add("fighting-container");
 	main.appendChild(section);
 	main.appendChild(attackBtn);
+	main.appendChild(healBtn);
 	main.style.backgroundImage =
 		"url('https://cdn1.epicgames.com/ue/product/Screenshot/2a-1920x1080-07c9dfe6bf588f8db7dac536c295896a.png?resize=1&w=1920')";
 
 	attackBtn.classList.remove("hidden");
+	healBtn.classList.remove("hidden");
 	attackBtn.addEventListener("click", () => {
 		selectedCharacters[0].attack(selectedCharacters[1]);
 		selectedCharacters[1].attack(selectedCharacters[0]);
+		console.log(selectedCharacters);
+	});
+	healBtn.addEventListener("click", () => {
+		selectedCharacters[0].heal();
+		console.log(selectedCharacters);
 	});
 	selectedCharacters.forEach((character) => {
 		div = document.createElement("div");
