@@ -1,6 +1,7 @@
 let characterContainer = document.querySelector("#characterContainer");
 let selectedCharacters = [];
 let startBtn = document.querySelector("#startBtn");
+let attackBtn = document.querySelector("#attackBtn");
 let main = document.querySelector("main");
 let id = 1;
 let score = 0;
@@ -21,14 +22,16 @@ class Character {
 	}
 
 	attack(target) {
-		const damage = this.strength - target.defense;
-		target.health -= damage;
-		console.log(
+		target.health -= this.strength;
+		if (target.health <= 0 && this.health <= 0) {
+			return alert(`${target.name} and ${this.name} are dead !  TIE !!!`);
+		}
+		if (target.health <= 0) {
+			return alert(`${target.name} is dead ! ${this.name} WINS !!!`);
+		}
+		alert(
 			`${this.name} attacks, ${target.name} has lost ${this.strength} health points !`
 		);
-		if (target.health <= 0) {
-			console.log(`${target.name} is dead ! ${this.name} WINS !!!`);
-		}
 	}
 	// heal(health, magic) {
 	// 	console.log(`You healed ${health} points and lost ${magic} points !`);
@@ -46,11 +49,11 @@ class Character {
 }
 
 let playableCharacters = [
-	(Cat = new Character(id++, "Cat", 1000, 20, 0, 5, "/assets/cat.gif")),
+	(Cat = new Character(id++, "Cat", 100, 20, 0, 5, "/assets/cat.gif")),
 	(HollowKnight = new Character(
 		id++,
 		"Hollow Knight",
-		1000,
+		100,
 		20,
 		0,
 		5,
@@ -59,7 +62,7 @@ let playableCharacters = [
 	(DarkMage = new Character(
 		id++,
 		"Dark Mage",
-		1000,
+		100,
 		20,
 		0,
 		5,
@@ -68,7 +71,7 @@ let playableCharacters = [
 	(Kratos = new Character(
 		id++,
 		"Kratos",
-		1000,
+		100,
 		20,
 		0,
 		5,
@@ -77,7 +80,7 @@ let playableCharacters = [
 	(Goku = new Character(
 		id++,
 		"Son Goku",
-		1000,
+		100,
 		100,
 		50,
 		100,
@@ -86,7 +89,7 @@ let playableCharacters = [
 	(Skeleton = new Character(
 		id++,
 		"Skeleton",
-		1000,
+		100,
 		20,
 		0,
 		5,
@@ -95,7 +98,7 @@ let playableCharacters = [
 	(Mario = new Character(
 		id++,
 		"Mario",
-		1000,
+		100,
 		20,
 		0,
 		5,
@@ -104,7 +107,7 @@ let playableCharacters = [
 	(Sonic = new Character(
 		id++,
 		"Sonic",
-		1000,
+		100,
 		20,
 		0,
 		5,
@@ -136,13 +139,13 @@ const addSelectCharacter = (character) => {
 	if (selectedCharacters.length >= 0) {
 		selectedCharacters = [];
 	}
-	selectedCharacters.unshift(character);
+	selectedCharacters.push(character);
 	alert(`You selected ${character.name}`);
 	// Choix aléatoire d’un personnage dans le tableau
 	let randomIndex = Math.floor(Math.random() * playableCharacters.length);
 	let computerChoice = playableCharacters[randomIndex];
 
-	selectedCharacters.unshift(computerChoice);
+	selectedCharacters.push(computerChoice);
 	alert(`Computer selected : ${computerChoice.name}`);
 	console.log(selectedCharacters);
 };
@@ -152,5 +155,29 @@ startBtn.addEventListener("click", () => {
 		return alert("Please choose a fighter");
 	}
 	main.innerHTML = "";
-	console.log("allo");
+	audio.src = "/assets/fight-theme.mp3";
+	section = document.createElement("section");
+	section.classList.add("fighting-container");
+	main.appendChild(section);
+	main.appendChild(attackBtn);
+	main.style.backgroundImage =
+		"url('https://cdn1.epicgames.com/ue/product/Screenshot/2a-1920x1080-07c9dfe6bf588f8db7dac536c295896a.png?resize=1&w=1920')";
+
+	attackBtn.classList.remove("hidden");
+	attackBtn.addEventListener("click", () => {
+		selectedCharacters[0].attack(selectedCharacters[1]);
+		selectedCharacters[1].attack(selectedCharacters[0]);
+	});
+	selectedCharacters.forEach((character) => {
+		div = document.createElement("div");
+		div.classList.add("character-div");
+		div.setAttribute("id", character.id);
+
+		img = document.createElement("img");
+		img.src = character.img;
+
+		//Ajout des éléments
+		div.appendChild(img);
+		section.appendChild(div);
+	});
 });

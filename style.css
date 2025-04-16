@@ -23,7 +23,6 @@ button {
 	padding: 10px;
 	border-radius: 20px;
 	color: black;
-	font-size: 1.2em;
 	font-weight: bold;
 	&:hover {
 		scale: 125%;
@@ -35,6 +34,7 @@ button {
 
 main {
 	color: white;
+	background-color: black;
 	min-height: 90vh;
 	gap: 40px;
 	max-height: fit-content;
@@ -42,15 +42,16 @@ main {
 	flex-direction: column;
 	justify-content: space-evenly;
 	align-items: center;
-	padding: 75px 20px;
-	background-image: url("https://png.pngtree.com/background/20220715/original/pngtree-duel-cartoon-red-blue-vs-lightning-background-picture-image_1626084.jpg");
-	background-size: cover;
-	background-position: center;
+	padding-top: 75px;
+}
 
+main > p {
+	padding: 0 20px;
 }
 
 #characterContainer {
 	width: 100%;
+	padding: 40px 20px;
 	min-height: 10vh;
 	max-height: fit-content;
 	display: flex;
@@ -59,11 +60,14 @@ main {
 	justify-content: space-around;
 	align-items: center;
 	gap: 50px;
+	background-image: url("https://png.pngtree.com/background/20220715/original/pngtree-duel-cartoon-red-blue-vs-lightning-background-picture-image_1626084.jpg");
+	background-size: cover;
+	background-position: center;
 }
 .character-div {
 	background-color: white;
 	border: 3px solid black;
-	height: 15vh;
+	height: 150px;
 	width: 40%;
 	object-fit: cover;
 	border-radius: 20px;
@@ -79,8 +83,17 @@ main {
 		width: 100%;
 	}
 }
+
+.fighting-container {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	height: 20vh;
+}
 footer {
-	min-height: 30vh;
+	min-height: 40vh;
 	max-height: fit-content;
 	font-size: 1em;
 	background-color: black;
