@@ -25,14 +25,25 @@ class Character {
 	attack(target) {
 		target.health -= this.strength;
 		if (target.health <= 0 && this.health <= 0) {
-			return alert(`${target.name} and ${this.name} are dead !  TIE !!!`);
+			alert(`${target.name} and ${this.name} are dead !  TIE !!!`);
+			return location.reload();
 		}
 		if (target.health <= 0) {
-			return alert(`${target.name} is dead ! ${this.name} WINS !!!`);
+			alert(`${target.name} is dead ! ${this.name} WINS !!!`);
+			return location.reload();
 		}
 		alert(
 			`${this.name} attacks ! ${target.name} has lost ${this.strength} HEALTH !`
 		);
+	}
+	heal() {
+		if (this.magic <= 0) {
+			return alert("You have no magic left !");
+		}
+		const healed = 150;
+		this.health += healed;
+		this.magic -= healed;
+		alert(`You healed ${healed} HEALTH and lost ${healed} MAGIC !`);
 	}
 
 	// block(name, health, defense) {
@@ -208,6 +219,7 @@ startBtn.addEventListener("click", () => {
 	selectedCharacters.forEach((character) => {
 		div = document.createElement("div");
 		div.classList.add("character-div");
+		div.style.backgroundColor = "";
 		div.setAttribute("id", character.id);
 
 		img = document.createElement("img");

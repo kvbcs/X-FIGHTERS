@@ -8,7 +8,10 @@
 		<link
 			rel="stylesheet"
 			href="style.css" />
-            <link rel="stylesheet" href="desktop.css">
+		<link
+			rel="stylesheet"
+			href="desktop.css" />
+
 		<title>2D Fighters</title>
 	</head>
 	<body>
@@ -17,14 +20,20 @@
 			<button>How to play</button>
 		</header>
 		<main>
-			<p>
-				Unleash the fighter in you with our fast-paced 2D brawler —
-				where every punch writes your legend at the International
-				Meeting of Gamers!
-			</p>
-			<a href="select.html"><button>Play</button></a>
+			<h2>Choose your fighter !</h2>
+			<button id="startBtn">Start game</button>
 
-			
+			<section id="characterContainer"></section>
+			<button
+				id="attackBtn"
+				class="hidden">
+				Attack
+			</button>
+			<button
+				id="healBtn"
+				class="hidden">
+				Heal
+			</button>
 		</main>
 		<footer>
 			<audio
