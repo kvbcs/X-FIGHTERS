@@ -1,5 +1,6 @@
 let characterContainer = document.querySelector("#characterContainer");
 let selectedCharacters = [];
+let howBtn = document.querySelector("#howBtn");
 let startBtn = document.querySelector("#startBtn");
 let attackBtn = document.querySelector("#attackBtn");
 let healBtn = document.querySelector("#healBtn");
@@ -11,6 +12,11 @@ let lossCounter = 0;
 const audio = document.querySelector("audio");
 audio.volume = 0.2;
 
+howBtn.addEventListener("click", () => {
+	alert(
+		"Click play, choose 1 fighter to start the game then click start game. You can attack or heal to defeat your opponent."
+	);
+});
 class Character {
 	constructor(id, name, img) {
 		this.id = id++;
@@ -187,7 +193,7 @@ const addSelectCharacter = (character) => {
 	let computerChoice = playableCharacters[randomIndex];
 
 	selectedCharacters.push(computerChoice);
-	alert(`Computer selected : ${computerChoice.name}`);
+	alert(`Computer selected ${computerChoice.name}`);
 	console.log(selectedCharacters);
 };
 
