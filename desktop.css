@@ -6,6 +6,12 @@
 	.character-div {
 		width: 300px;
 		height: 300px;
+		&:hover {
+			cursor: pointer;
+			scale: 125%;
+			background-color: gray;
+			transition: 0.2s ease-in-out;
+		}
 	}
 	p {
 		font-size: 2em;

@@ -11,8 +11,7 @@
 		<link
 			rel="stylesheet"
 			href="desktop.css" />
-
-		<title>X-Fighters - Character Selection</title>
+		<title>X-Fighters - Fight !</title>
 	</head>
 	<body>
 		<header>
@@ -24,11 +23,30 @@
 			></a>
 			<button id="howBtn">How to play</button>
 		</header>
-		<main id="main-select">
-			<h2>Choose your fighter !</h2>
-			<button id="startBtn">Start game</button>
-
-			<section id="characterContainer"></section>
+		<main id="fight-menu">
+			<aside>
+				<article>
+					<progress
+						class="health-bar"
+						value="100"
+						max="100"></progress>
+					<progress id="player-magic"></progress>
+				</article>
+				<article>
+					<progress
+						class="health-bar"
+						value="100"
+						max="100"></progress>
+					<progress id="enemy-magic"></progress>
+				</article>
+			</aside>
+			<section id="fighting-container"></section>
+			<div id="btn-container">
+				<button id="attackBtn">Attack</button
+				><button id="blockBtn">Block</button
+				><button id="healBtn">Heal</button
+				><button id="magicBtn">Magic</button>
+			</div>
 		</main>
 		<footer>
 			<audio
@@ -36,7 +54,7 @@
 				autoplay
 				loop>
 				<source
-					src="/assets/select-theme.mp3"
+					src="/assets/fight-theme.mp3"
 					type="audio/mpeg" />
 				Your browser does not support the audio element.
 			</audio>
@@ -46,5 +64,6 @@
 	<script src="env.js"></script>
 	<script src="poo.js"></script>
 	<script src="characters.js"></script>
-	<script src="select.js"></script>
+
+	<script src="fight.js"></script>
 </html>

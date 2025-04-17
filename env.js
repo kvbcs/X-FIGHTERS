@@ -1,25 +1,37 @@
-let characterContainer = document.querySelector("#characterContainer");
-let selectedCharacters = [];
-let howBtn = document.querySelector("#howBtn");
-let startBtn = document.querySelector("#startBtn");
-let attackBtn = document.querySelector("#attackBtn");
-let healBtn = document.querySelector("#healBtn");
-let main = document.querySelector("main");
-let id = 1;
+const characterContainer = document.querySelector("#characterContainer");
+const howBtn = document.querySelector("#howBtn");
+const startBtn = document.querySelector("#startBtn");
+const attackBtn = document.querySelector("#attackBtn");
+const healBtn = document.querySelector("#healBtn");
+const main = document.querySelector("main");
+const audio = document.querySelector("audio");
+const comingSoon = document.querySelectorAll(".coming-soon");
+const fightingContainer = document.querySelector("#fighting-container");
+let healthBar = document.querySelector(".health-bar")
+// let enemyHealth = document.querySelector("#enemy-health");
+// let playerMagic = document.querySelector("#player-magic");
+// let enemyMagic = document.querySelector("#enemy-magic");
+
+
+//Scores declarations
 let score = 0;
 let winCounter = 0;
 let lossCounter = 0;
-const audio = document.querySelector("audio");
+
+//Divers
+let id = 1;
 audio.volume = 0.2;
-let comingSoon = document.querySelectorAll(".coming-soon");
+let selectedCharacters = [];
 
 comingSoon.forEach((e) => {
 	e.addEventListener("click", () => {
 		alert("Coming Soon !");
 	});
 });
+
+
 howBtn.addEventListener("click", () => {
 	alert(
-		"Click play, choose 1 fighter to start the game then click start game. You can attack or heal to defeat your opponent."
+		"Click the 1 player button, choose 1 fighter to start the game then click start game. You can attack or heal to defeat your opponent."
 	);
 });

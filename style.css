@@ -56,13 +56,22 @@ main {
 	justify-content: space-evenly;
 	align-items: center;
 	padding: 15px;
-	background-image: url("https://png.pngtree.com/background/20220715/original/pngtree-duel-cartoon-red-blue-vs-lightning-background-picture-image_1626084.jpg");
-	background-size: cover;
-	background-position: center;
 }
 
 #main-menu {
 	background-image: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/64c9ea21-82be-48a3-a6f5-6d1786a3fc7e/d849dwo-0cdfe0ca-4bbe-43d5-b8d4-6c58db906e1e.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzY0YzllYTIxLTgyYmUtNDhhMy1hNmY1LTZkMTc4NmEzZmM3ZVwvZDg0OWR3by0wY2RmZTBjYS00YmJlLTQzZDUtYjhkNC02YzU4ZGI5MDZlMWUuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.n3jDMgOwazieu5EgWAGyGW4kZSx12Xqbs3BMHPLp6o4");
+	background-size: cover;
+	background-position: center;
+}
+#main-select {
+	background-image: url("https://png.pngtree.com/background/20220715/original/pngtree-duel-cartoon-red-blue-vs-lightning-background-picture-image_1626084.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+#fight-menu {
+	background-image: url("https://cdn1.epicgames.com/ue/product/Screenshot/2a-1920x1080-07c9dfe6bf588f8db7dac536c295896a.png?resize=1&w=1920");
+	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
 }
@@ -78,12 +87,21 @@ main {
 	background-color: var(--primaryColor);
 	color: white;
 	border: 1px solid black;
-		box-shadow: 1px 1px 10px black;
+	box-shadow: 1px 1px 10px black;
+}
 
+h2 {
+	margin-top: 100px;
+	color: black;
+	font-weight: 900;
+	font-size: 2em;
+	background-color: white;
+	padding: 20px;
+	border-radius: 20px;
 }
 #characterContainer {
 	width: 100%;
-	padding: 40px 20px;
+	padding: 40px 0;
 	min-height: 10vh;
 	max-height: fit-content;
 	display: flex;
@@ -102,26 +120,60 @@ main {
 	object-fit: cover;
 	border-radius: 20px;
 	padding: 20px;
-	&:hover {
-		cursor: pointer;
-		scale: 125%;
-		background-color: gray;
-		transition: 0.2s ease-in-out;
-	}
 }
 .character-div > img {
 	height: 100%;
 	width: 100%;
 }
-.fighting-container {
+
+#fighting-container {
+	margin-bottom: 50px;
 	width: 100%;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
-	height: 20vh;
+	height: 50%;
+	gap: 50px;
 }
 
+.fighter-div {
+	height: 200px;
+	width: 200px;
+	object-fit: cover;
+}
+
+.fighter-div > img {
+	height: 100%;
+	width: 100%;
+}
+aside {
+	width: 100%;
+	height: 10vh;
+	display: flex;
+	flex-direction: row;
+	gap: 20px;
+}
+article{
+	height: 100%;
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+
+}
+.health-bar{
+	background-color: rgb(0, 201, 0);
+	width: 100%;
+	height: 50%;
+	border-radius: 20px;
+}
+#player-magic, #enemy-magic{
+	background-color: blue;
+	width: 100%;
+	height: 50%;
+	border-radius: 20px;
+}
 footer {
 	min-height: 40vh;
 	max-height: fit-content;

@@ -11,6 +11,8 @@ class Character {
 
 	attack(target) {
 		target.health -= this.strength;
+		healthBar.value -= this.strength / 10
+
 		if (target.health <= 0 && this.health <= 0) {
 			alert(`${target.name} and ${this.name} are dead !  TIE !!!`);
 			return location.reload();
