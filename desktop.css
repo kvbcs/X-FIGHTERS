@@ -1,8 +1,8 @@
-@media only screen and (min-width: 375px) {
-    header{
-        justify-content: space-between;
-        padding: 0 30px;
-    }
+@media only screen and (min-width: 376px) {
+	header {
+		justify-content: space-between;
+		padding: 0 30px;
+	}
 	.character-div {
 		width: 300px;
 		height: 300px;
@@ -13,7 +13,7 @@
 		padding: 50px;
 		border-radius: 10px;
 	}
-	#menu {
+	#main-menu {
 		padding: 0 100px;
 	}
 	h2 {
@@ -21,5 +21,11 @@
 		background-color: black;
 		padding: 50px;
 		border-radius: 10px;
+	}
+	button:hover {
+		scale: 125%;
+		background-color: orange;
+		color: black;
+		cursor: pointer;
 	}
 }

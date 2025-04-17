@@ -11,7 +11,12 @@ let winCounter = 0;
 let lossCounter = 0;
 const audio = document.querySelector("audio");
 audio.volume = 0.2;
-
+let comingSoon = document.querySelectorAll(".coming-soon");
+comingSoon.forEach((e) => {
+	e.addEventListener("click", () => {
+		alert("Coming Soon !");
+	});
+});
 howBtn.addEventListener("click", () => {
 	alert(
 		"Click play, choose 1 fighter to start the game then click start game. You can attack or heal to defeat your opponent."
