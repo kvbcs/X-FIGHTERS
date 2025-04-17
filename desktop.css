@@ -3,6 +3,13 @@
 		justify-content: space-between;
 		padding: 0 30px;
 	}
+	header > a {
+		height: 80%;
+		width: 400px;
+	}
+#btn-container{
+	width: 400px;
+}
 	.character-div {
 		width: 300px;
 		height: 300px;
@@ -24,7 +31,6 @@
 	}
 	h2 {
 		font-size: 2em;
-		background-color: black;
 		padding: 50px;
 		border-radius: 10px;
 	}
@@ -33,5 +39,8 @@
 		background-color: orange;
 		color: black;
 		cursor: pointer;
+	}
+	aside{
+		width: 500px;
 	}
 }

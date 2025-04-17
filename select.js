@@ -16,6 +16,7 @@ playableCharacters.forEach((character) => {
 	div.addEventListener("click", () => {
 		console.log(character);
 		addSelectCharacter(character);
+		
 	});
 });
 
@@ -24,23 +25,20 @@ const addSelectCharacter = (character) => {
 		selectedCharacters = [];
 	}
 	selectedCharacters.push(character);
-	alert(`You selected ${character.name}`);
 	// Choix aléatoire d’un personnage dans le tableau
 	let randomIndex = Math.floor(Math.random() * playableCharacters.length);
 	let computerChoice = playableCharacters[randomIndex];
 
 	selectedCharacters.push(computerChoice);
-	alert(`Computer selected ${computerChoice.name}`);
+	fightCommentary.textContent = `You selected ${character.name} and the AI selected ${computerChoice.name}`;
 	console.log(selectedCharacters);
 };
 
 startBtn.addEventListener("click", () => {
 	if (selectedCharacters.length <= 0) {
-		return alert("Please choose a fighter");
+		return (fightCommentary.textContent = "Please choose a fighter !");
 	}
-localStorage.setItem("characters", JSON.stringify(selectedCharacters));
+	localStorage.setItem("characters", JSON.stringify(selectedCharacters));
 
 	window.location.href = "/fight.html";
 });
-
-

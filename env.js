@@ -7,11 +7,9 @@ const main = document.querySelector("main");
 const audio = document.querySelector("audio");
 const comingSoon = document.querySelectorAll(".coming-soon");
 const fightingContainer = document.querySelector("#fighting-container");
-let healthBar = document.querySelector(".health-bar")
-// let enemyHealth = document.querySelector("#enemy-health");
-// let playerMagic = document.querySelector("#player-magic");
-// let enemyMagic = document.querySelector("#enemy-magic");
-
+let healthBar = document.querySelector(".health-bar");
+let magicBar = document.querySelector(".magic-bar");
+let fightCommentary = document.querySelector("#fight-commentary")
 
 //Scores declarations
 let score = 0;
@@ -28,7 +26,6 @@ comingSoon.forEach((e) => {
 		alert("Coming Soon !");
 	});
 });
-
 
 howBtn.addEventListener("click", () => {
 	alert(

@@ -8,31 +8,33 @@ class Character {
 		this.magic = 100;
 		this.img = img;
 	}
-
 	attack(target) {
 		target.health -= this.strength;
-		healthBar.value -= this.strength / 10
+		healthBar.value -= this.strength;
+		console.log(healthBar.value);
 
 		if (target.health <= 0 && this.health <= 0) {
-			alert(`${target.name} and ${this.name} are dead !  TIE !!!`);
-			return location.reload();
+			fightCommentary.textContent = `${target.name} and ${this.name} are dead !  TIE !!!`;
+
+			return (location.href = "/select.html");
 		}
 		if (target.health <= 0) {
-			alert(`${target.name} is dead ! ${this.name} WINS !!!`);
-			return location.reload();
+			fightCommentary.textContent = `${target.name} is dead ! ${this.name} WINS !!!`;
+
+			return (location.href = "/select.html");
 		}
-		alert(
-			`${this.name} attacks ! ${target.name} has lost ${this.strength} HEALTH !`
-		);
+		fightCommentary.textContent = `${this.name} attacks ! ${target.name} has lost ${this.strength} HEALTH !`;
 	}
 	heal() {
 		if (this.magic <= 0) {
-			return alert("You have no magic left !");
+			return (fightCommentary.textContent = "You have no magic left !");
 		}
 		const healed = 150;
 		this.health += healed;
 		this.magic -= healed;
-		alert(`You healed ${healed} HEALTH and lost ${healed} MAGIC !`);
+		healthBar.value += healed;
+		magicBar -= healed;
+		fightCommentary.textContent = `You healed ${healed} HEALTH and lost ${healed} MAGIC !`;
 	}
 
 	// block(name, health, defense) {
@@ -59,12 +61,12 @@ class Mage extends Character {
 	}
 	heal() {
 		if (this.magic <= 0) {
-			return alert("You have no magic left !");
+			return (fightCommentary.textContent = "You have no magic left !");
 		}
 		const healed = 150;
 		this.health += healed;
 		this.magic -= healed;
-		alert(`You healed ${healed} HEALTH and lost ${healed} MAGIC !`);
+		fightCommentary.textContent = `You healed ${healed} HEALTH and lost ${healed} MAGIC !`;
 	}
 }
 

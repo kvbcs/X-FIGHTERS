@@ -3,12 +3,10 @@ selectedCharacters = JSON.parse(localStorage.getItem("characters")).map(
 		return new Character(charData.id, charData.name, charData.img);
 	}
 );
-console.log(selectedCharacters);
-
-
+console.log(selectedCharacters[0].health);
+healthBar.value = selectedCharacters[0].health
 attackBtn.addEventListener("click", () => {
 	selectedCharacters[0].attack(selectedCharacters[1]);
-	// enemyHealth -= selectedCharacters[0].strength
 	selectedCharacters[1].attack(selectedCharacters[0]);
 	console.log(selectedCharacters);
 });
@@ -27,4 +25,6 @@ selectedCharacters.forEach((character) => {
 	div.setAttribute("id", selectedCharacters.indexOf(character));
 	div.appendChild(img);
 	fightingContainer.appendChild(div);
+	
+	
 });
