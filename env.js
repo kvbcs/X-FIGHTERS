@@ -38,3 +38,5 @@ howBtn.addEventListener("click", () => {
 		"Click the 1 player button, choose 1 fighter to start the game then click start game. You can attack or heal to defeat your opponent."
 	);
 });
+
+

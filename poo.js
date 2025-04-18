@@ -4,26 +4,13 @@ class Character {
 		this.name = name;
 		this.health = 1000;
 		this.strength = 100;
-		this.defense = 100;
-		this.magic = 100;
+		this.magic = 600;
 		this.img = img;
 	}
 	attack(target) {
 		target.health -= this.strength;
-		// playerHealth.value = target.health
 
-		// if (target.health <= 0 && this.health <= 0) {
-		// 	fightCommentary.textContent = `${target.name} and ${this.name} are dead !  TIE !!!`;
-
-		// 	return (location.href = "/select.html");
-		// }
-		// if (target.health <= 0) {
-		// 	fightCommentary.textContent = `${target.name} is dead ! ${this.name} WINS !!!`;
-
-		// 	return (location.href = "/select.html");
-		// }
-		fightCommentary.textContent = `${this.name} attacks ! 
-		${target.name} has lost ${this.strength} HEALTH !`;
+		fightCommentary.textContent = `${this.name} attacks ! ${target.name} lost ${this.strength} HP !`;
 	}
 	heal() {
 		if (this.magic < 150) {
@@ -32,28 +19,25 @@ class Character {
 		const healed = 150;
 		this.health += healed;
 		this.magic -= healed;
-		healthBar.value += healed;
-		magicBar -= healed;
-		fightCommentary.textContent = `${this.name} healed ${healed} HEALTH and lost ${healed} MAGIC !`;
+		fightCommentary.textContent = `${this.name} healed ${healed} HP and lost ${healed} MP !`;
 	}
 
 	magicAttack(target) {
-		const spell = 100;
+		const spell = 150;
 		if (this.magic < spell) {
 			fightCommentary.textContent = `${this.name} doesn’t have enough magic!`;
 			return;
 		}
 		this.magic -= spell;
 		target.health -= spell;
-		fightCommentary.textContent = `${this.name} used magic and dealt ${spell} damage to ${target.name} !`;
+		fightCommentary.textContent = `${this.name} used magic ! ${target.name} lost ${spell} HP !`;
 	}
 }
 class Mage extends Character {
 	constructor(id, name, img) {
 		super(id, name, img);
-		this.health = 500;
+		this.health = 750;
 		this.strength = 50;
-		this.defense = 50;
 		this.magic = 1000;
 	}
 }
@@ -61,9 +45,8 @@ class Mage extends Character {
 class Warrior extends Character {
 	constructor(id, name, img) {
 		super(id, name, img);
-		this.health = 750;
-		this.strength = 150;
-		this.defense = 500;
-		this.magic = 0;
+		this.health = 500;
+		this.strength = 200;
+		this.magic = 450;
 	}
 }

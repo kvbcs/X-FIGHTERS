@@ -2,14 +2,15 @@
 	header {
 		justify-content: space-between;
 		padding: 0 30px;
+		height: 10vh;
 	}
 	header > a {
 		height: 80%;
 		width: 400px;
 	}
-#btn-container{
-	width: 400px;
-}
+	#btn-container {
+		width: 400px;
+	}
 	.character-div {
 		width: 300px;
 		height: 300px;
@@ -40,7 +41,7 @@
 		color: black;
 		cursor: pointer;
 	}
-	aside{
+	aside {
 		width: 500px;
 	}
 }

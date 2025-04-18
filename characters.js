@@ -1,5 +1,5 @@
 let playableCharacters = [
-	(Cat = new Character(id++, "Cat", "/assets/cat.gif")),
+	(DrumCat = new Character(id++, "Drum Cat", "/assets/cat.gif")),
 	(HollowKnight = new Warrior(
 		id++,
 		"Hollow Knight",

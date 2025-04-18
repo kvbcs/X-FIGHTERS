@@ -20,7 +20,20 @@ const updateUI = () => {
 	enemyMagic.value = enemy.magic;
 };
 
+const playSfx = (src, volume) => {
+	const audio = document.createElement("audio");
+	audio.src = src;
+	audio.autoplay = true;
+	audio.volume = volume;
+
+	audio.addEventListener("ended", () => {
+		audio.remove();
+	});
+	fightingContainer.appendChild(audio);
+};
+
 const checkGameOver = () => {
+	console.log(selectedCharacters);
 
 	//Vérif du gagnant avec ternaire
 	if (player.health <= 0 || enemy.health <= 0) {
@@ -30,6 +43,16 @@ const checkGameOver = () => {
 				: player.health > 0
 				? player.name
 				: enemy.name;
+		if (winner === "Nobody") {
+			audio.src = "/assets/game-over.mp3";
+			audio.removeAttribute("loop");
+		} else if (winner === player.name) {
+			audio.src = "/assets/victory-sfx.mp3";
+			audio.removeAttribute("loop");
+		} else {
+			audio.src = "/assets/game-over.mp3";
+			audio.removeAttribute("loop");
+		}
 
 		fightCommentary.textContent = `${winner} wins the fight!`;
 
@@ -43,7 +66,7 @@ const checkGameOver = () => {
 			if (again === "yes") {
 				location.reload();
 			} else {
-				location.href="/select.html"
+				location.href = "/select.html";
 			}
 		}, 1000);
 		return true;
@@ -53,30 +76,40 @@ const checkGameOver = () => {
 
 const enemyPlay = () => {
 	setTimeout(() => {
-		if (enemy.health <= enemy.health / 2 && enemy.magic >= 150) {
+		if (enemy.health <= 250 && enemy.magic >= 150) {
 			enemy.heal();
-		} else if (enemy.magic >= 100) {
+			playSfx("./assets/health-sfx.mp3", 0.4);
+		} else if (enemy.magic >= 150) {
 			enemy.magicAttack(player);
+			playSfx("./assets/magic-sfx.mp3", 0.2);
 		} else {
 			enemy.attack(player);
+			playSfx("./assets/sword-sfx.mp3", 0.2);
 		}
 		updateUI();
 		checkGameOver();
 		playerTurn = true;
-	}, 2000);
+	}, 1500);
 };
 
 attackBtn.addEventListener("click", () => {
-	if (!playerTurn) return;
+	if (!playerTurn) {
+		return;
+	}
 	player.attack(enemy);
+	playSfx("./assets/sword-sfx.mp3", 0.2);
+
 	updateUI();
 	playerTurn = false;
-	if (!checkGameOver()) enemyPlay();
+	if (!checkGameOver()) {
+		enemyPlay();
+	}
 });
 
 healBtn.addEventListener("click", () => {
 	if (!playerTurn) return;
 	player.heal();
+	playSfx("./assets/health-sfx.mp3", 0.4);
 	updateUI();
 	playerTurn = false;
 	if (!checkGameOver()) enemyPlay();
@@ -85,6 +118,7 @@ healBtn.addEventListener("click", () => {
 magicBtn.addEventListener("click", () => {
 	if (!playerTurn) return;
 	player.magicAttack(enemy);
+	playSfx("./assets/magic-sfx.mp3", 0.2);
 	updateUI();
 	playerTurn = false;
 	if (!checkGameOver()) enemyPlay();
