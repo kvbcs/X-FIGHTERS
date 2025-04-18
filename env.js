@@ -24,6 +24,8 @@ let lossCounter = 0;
 let id = 1;
 audio.volume = 0.2;
 let selectedCharacters = [];
+let playAgain = true;
+let playerTurn = true;
 
 comingSoon.forEach((e) => {
 	e.addEventListener("click", () => {

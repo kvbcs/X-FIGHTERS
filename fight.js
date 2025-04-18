@@ -9,34 +9,85 @@ selectedCharacters = JSON.parse(localStorage.getItem("characters")).map(
 		}
 	}
 );
-console.log(selectedCharacters);
 
 const player = selectedCharacters[0];
 const enemy = selectedCharacters[1];
 
-playerHealth.value = player.health;
-enemyHealth.value = enemy.health;
-playerMagic.value = player.magic;
-enemyMagic.value = enemy.magic;
+const updateUI = () => {
+	playerHealth.value = player.health;
+	enemyHealth.value = enemy.health;
+	playerMagic.value = player.magic;
+	enemyMagic.value = enemy.magic;
+};
 
-console.log(playerHealth.value);
+const checkGameOver = () => {
 
-//Attack button
+	//Vérif du gagnant avec ternaire
+	if (player.health <= 0 || enemy.health <= 0) {
+		const winner =
+			player.health <= 0 && enemy.health <= 0
+				? "Nobody"
+				: player.health > 0
+				? player.name
+				: enemy.name;
+
+		fightCommentary.textContent = `${winner} wins the fight!`;
+
+		setTimeout(() => {
+			let again = prompt(
+				"Do you want to play again? (yes/no)"
+			).toLowerCase();
+			while (again !== "yes" && again !== "no") {
+				again = prompt("Please type 'yes' or 'no':").toLowerCase();
+			}
+			if (again === "yes") {
+				location.reload();
+			} else {
+				location.href="/select.html"
+			}
+		}, 1000);
+		return true;
+	}
+	return false;
+};
+
+const enemyPlay = () => {
+	setTimeout(() => {
+		if (enemy.health <= enemy.health / 2 && enemy.magic >= 150) {
+			enemy.heal();
+		} else if (enemy.magic >= 100) {
+			enemy.magicAttack(player);
+		} else {
+			enemy.attack(player);
+		}
+		updateUI();
+		checkGameOver();
+		playerTurn = true;
+	}, 2000);
+};
+
 attackBtn.addEventListener("click", () => {
+	if (!playerTurn) return;
 	player.attack(enemy);
-	console.log(selectedCharacters);
+	updateUI();
+	playerTurn = false;
+	if (!checkGameOver()) enemyPlay();
 });
 
-//Heal button
 healBtn.addEventListener("click", () => {
+	if (!playerTurn) return;
 	player.heal();
-	console.log(selectedCharacters);
+	updateUI();
+	playerTurn = false;
+	if (!checkGameOver()) enemyPlay();
 });
 
-//Magic button
 magicBtn.addEventListener("click", () => {
+	if (!playerTurn) return;
 	player.magicAttack(enemy);
-	console.log(selectedCharacters);
+	updateUI();
+	playerTurn = false;
+	if (!checkGameOver()) enemyPlay();
 });
 
 selectedCharacters.forEach((character) => {

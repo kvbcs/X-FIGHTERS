@@ -10,20 +10,20 @@ class Character {
 	}
 	attack(target) {
 		target.health -= this.strength;
-playerHealth.value = target.health
-console.log(playerHealth.value);
+		// playerHealth.value = target.health
 
-		if (target.health <= 0 && this.health <= 0) {
-			fightCommentary.textContent = `${target.name} and ${this.name} are dead !  TIE !!!`;
+		// if (target.health <= 0 && this.health <= 0) {
+		// 	fightCommentary.textContent = `${target.name} and ${this.name} are dead !  TIE !!!`;
 
-			return (location.href = "/select.html");
-		}
-		if (target.health <= 0) {
-			fightCommentary.textContent = `${target.name} is dead ! ${this.name} WINS !!!`;
+		// 	return (location.href = "/select.html");
+		// }
+		// if (target.health <= 0) {
+		// 	fightCommentary.textContent = `${target.name} is dead ! ${this.name} WINS !!!`;
 
-			return (location.href = "/select.html");
-		}
-		fightCommentary.textContent = `${this.name} attacks ! ${target.name} has lost ${this.strength} HEALTH !`;
+		// 	return (location.href = "/select.html");
+		// }
+		fightCommentary.textContent = `${this.name} attacks ! 
+		${target.name} has lost ${this.strength} HEALTH !`;
 	}
 	heal() {
 		if (this.magic < 150) {
@@ -45,8 +45,6 @@ console.log(playerHealth.value);
 		}
 		this.magic -= spell;
 		target.health -= spell;
-		healthBar.value = target.health;
-		magicBar.value = this.magic;
 		fightCommentary.textContent = `${this.name} used magic and dealt ${spell} damage to ${target.name} !`;
 	}
 }
