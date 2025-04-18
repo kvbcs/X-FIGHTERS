@@ -2,33 +2,54 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="style.css" />
-		<title>2D Fighters</title>
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="style.css" />
+		<link
+			rel="stylesheet"
+			href="desktop.css" />
+		<title>X-Fighters - Title screen</title>
 	</head>
 	<body>
 		<header>
-			<h1>2D Fighters</h1>
-			<button>How to play</button>
+			<a href="index.html">
+				<div id="logo-container">
+					<img
+						src="/assets/logo-removebg-preview.png"
+						alt="X-Fighters logo" /></div
+			></a>
+			<button id="howBtn">How to play</button>
 		</header>
-		<main>
-			<p>
-				Unleash the fighter in you with our fast-paced 2D brawler —
-				where every punch writes your legend at the International
-				Meeting of Gamers!
-			</p>
-			<h2>Choose your fighter !</h2>
-			<button id="startBtn">Start game</button>
-
-			<section id="characterContainer"></section>
+		<main id="main-menu">
+			<div id="logo-container">
+				<img
+					src="/assets/img-logo.PNG"
+					alt="International Meeting of Gamers logo" />
+				
+			</div>
+			<div id="btn-container">
+				<a href="select.html"
+					><button class="menu-btn">1 player</button></a
+				>
+				<button class="menu-btn coming-soon">2 players</button>
+				<button class="menu-btn coming-soon">Multiplayer</button>
+			</div>
 		</main>
 		<footer>
-			<audio controls loop>
-				<source src="/assets/menu-theme.mp3" type="audio/mpeg" />
+			<audio
+				controls
+				autoplay
+				loop>
+				<source
+					src="/assets/menu-theme.mp3"
+					type="audio/mpeg" />
 				Your browser does not support the audio element.
 			</audio>
 			<h3>Copyright 2025 Kyllian Vibancos</h3>
 		</footer>
 	</body>
-	<script src="index.js"></script>
+	<script src="env.js" defer></script>
 </html>

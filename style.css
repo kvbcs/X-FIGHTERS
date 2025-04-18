@@ -1,3 +1,7 @@
+:root {
+	--primaryColor: #0155b7;
+}
+
 * {
 	padding: 0;
 	margin: 0;
@@ -10,12 +14,26 @@
 header {
 	background-color: black;
 	width: 100%;
-	height: 10vh;
+	height: 15vh;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-evenly;
 	align-items: center;
-	color: white;
+}
+
+header > a {
+	width: 50%;
+}
+
+#logo-container {
+	object-fit: cover;
+}
+
+#logo-container > img {
+	height: 100%;
+	width: 100%;
+	border-radius: 20px;
+	box-shadow: 1px 1px 10px black;
 }
 
 button {
@@ -23,34 +41,67 @@ button {
 	padding: 10px;
 	border-radius: 20px;
 	color: black;
-	font-size: 1.2em;
 	font-weight: bold;
-	&:hover {
-		scale: 125%;
-		background-color: orange;
-		color: black;
-		cursor: pointer;
-	}
+	font-size: 1.1em;
 }
 
 main {
 	color: white;
-	min-height: 90vh;
+	background-color: black;
+	min-height: 85vh;
 	gap: 40px;
 	max-height: fit-content;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
 	align-items: center;
-	padding: 75px 20px;
-	background-image: url("https://png.pngtree.com/background/20220715/original/pngtree-duel-cartoon-red-blue-vs-lightning-background-picture-image_1626084.jpg");
-	background-size: cover;
-	background-position: center;
-
+	padding: 15px;
 }
 
+#main-menu {
+	background-image: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/64c9ea21-82be-48a3-a6f5-6d1786a3fc7e/d849dwo-0cdfe0ca-4bbe-43d5-b8d4-6c58db906e1e.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzY0YzllYTIxLTgyYmUtNDhhMy1hNmY1LTZkMTc4NmEzZmM3ZVwvZDg0OWR3by0wY2RmZTBjYS00YmJlLTQzZDUtYjhkNC02YzU4ZGI5MDZlMWUuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.n3jDMgOwazieu5EgWAGyGW4kZSx12Xqbs3BMHPLp6o4");
+	background-size: cover;
+	background-position: center;
+}
+#select-menu {
+	background-image: url("https://png.pngtree.com/background/20220715/original/pngtree-duel-cartoon-red-blue-vs-lightning-background-picture-image_1626084.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+#fight-menu {
+	background-image: url("https://cdn1.epicgames.com/ue/product/Screenshot/2a-1920x1080-07c9dfe6bf588f8db7dac536c295896a.png?resize=1&w=1920");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
+#btn-container {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	width: 80%;
+}
+.menu-btn {
+	width: 100%;
+	background-color: var(--primaryColor);
+	color: white;
+	border: 1px solid black;
+	box-shadow: 1px 1px 10px black;
+}
+
+h2 {
+	margin-top: 25px;
+	color: black;
+	font-weight: 900;
+	font-size: 2em;
+	background-color: white;
+	padding: 20px;
+	border-radius: 20px;
+}
 #characterContainer {
 	width: 100%;
+	padding: 40px 0;
 	min-height: 10vh;
 	max-height: fit-content;
 	display: flex;
@@ -60,27 +111,78 @@ main {
 	align-items: center;
 	gap: 50px;
 }
+
 .character-div {
 	background-color: white;
 	border: 3px solid black;
-	height: 15vh;
+	height: 150px;
 	width: 40%;
 	object-fit: cover;
 	border-radius: 20px;
 	padding: 20px;
-	/* &:hover {
-		cursor: pointer;
-		scale: 125%;
-		background-color: gray;
-		transition: 0.2s ease-in-out;
-	} */
-	&.character-div > img {
-		height: 100%;
-		width: 100%;
-	}
 }
+.character-div > img {
+	height: 100%;
+	width: 100%;
+}
+
+#fighting-container {
+	margin-bottom: 50px;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	height: 50%;
+	gap: 50px;
+}
+
+.fighter-div {
+	height: 200px;
+	width: 200px;
+	object-fit: cover;
+}
+
+.fighter-div > img {
+	height: 100%;
+	width: 100%;
+}
+aside {
+	width: 100%;
+	height: 10vh;
+	display: flex;
+	flex-direction: row;
+	gap: 20px;
+}
+article {
+	height: 100%;
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+.health-bar {
+	background-color: rgb(0, 255, 0);
+	width: 100%;
+	height: 50%;
+	border-radius: 20px;
+}
+.magic-bar {
+	background-color: rgb(0, 47, 255);
+	width: 100%;
+	height: 50%;
+	border-radius: 20px;
+}
+#fight-commentary {
+	font-size: 1.3em;
+	text-align: center;
+	font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+		"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+	font-weight: 900;
+}
+
 footer {
-	min-height: 30vh;
+	min-height: 40vh;
 	max-height: fit-content;
 	font-size: 1em;
 	background-color: black;
