@@ -16,7 +16,6 @@ playableCharacters.forEach((character) => {
 	div.addEventListener("click", () => {
 		console.log(character);
 		addSelectCharacter(character);
-		
 	});
 });
 
@@ -38,7 +37,18 @@ startBtn.addEventListener("click", () => {
 	if (selectedCharacters.length <= 0) {
 		return (fightCommentary.textContent = "Please choose a fighter !");
 	}
-	localStorage.setItem("characters", JSON.stringify(selectedCharacters));
+	// Ajouter le type à chaque personnage
+	const charactersWithType = selectedCharacters.map((char) => {
+		let type = "Character";
+		if (char instanceof Mage) type = "Mage";
+		else if (char instanceof Warrior) type = "Warrior";
 
+		return {
+			...char,
+			type: type,
+		};
+	});
+
+	localStorage.setItem("characters", JSON.stringify(charactersWithType));
 	window.location.href = "/fight.html";
 });

@@ -10,8 +10,8 @@ class Character {
 	}
 	attack(target) {
 		target.health -= this.strength;
-		healthBar.value -= this.strength;
-		console.log(healthBar.value);
+playerHealth.value = target.health
+console.log(playerHealth.value);
 
 		if (target.health <= 0 && this.health <= 0) {
 			fightCommentary.textContent = `${target.name} and ${this.name} are dead !  TIE !!!`;
@@ -26,77 +26,46 @@ class Character {
 		fightCommentary.textContent = `${this.name} attacks ! ${target.name} has lost ${this.strength} HEALTH !`;
 	}
 	heal() {
-		if (this.magic <= 0) {
-			return (fightCommentary.textContent = "You have no magic left !");
+		if (this.magic < 150) {
+			return (fightCommentary.textContent = `${this.name} has not enough magic left !`);
 		}
 		const healed = 150;
 		this.health += healed;
 		this.magic -= healed;
 		healthBar.value += healed;
 		magicBar -= healed;
-		fightCommentary.textContent = `You healed ${healed} HEALTH and lost ${healed} MAGIC !`;
+		fightCommentary.textContent = `${this.name} healed ${healed} HEALTH and lost ${healed} MAGIC !`;
 	}
 
-	// block(name, health, defense) {
-	// 	console.log(
-	// 		`${name} blocks ${target.name}'s attack and lost ${health} health points !`
-	// 	);
-	// }
-	// magicAttack(magic, health) {
-	// 	console.log(
-	// 		`Your magic did ${health} damage and you lost ${magic} points !`
-	// 	);
-	// }
+	magicAttack(target) {
+		const spell = 100;
+		if (this.magic < spell) {
+			fightCommentary.textContent = `${this.name} doesn’t have enough magic!`;
+			return;
+		}
+		this.magic -= spell;
+		target.health -= spell;
+		healthBar.value = target.health;
+		magicBar.value = this.magic;
+		fightCommentary.textContent = `${this.name} used magic and dealt ${spell} damage to ${target.name} !`;
+	}
 }
 class Mage extends Character {
 	constructor(id, name, img) {
 		super(id, name, img);
-		this.id = id++;
-		this.name = name;
 		this.health = 500;
 		this.strength = 50;
 		this.defense = 50;
 		this.magic = 1000;
-		this.img = img;
-	}
-	heal() {
-		if (this.magic <= 0) {
-			return (fightCommentary.textContent = "You have no magic left !");
-		}
-		const healed = 150;
-		this.health += healed;
-		this.magic -= healed;
-		fightCommentary.textContent = `You healed ${healed} HEALTH and lost ${healed} MAGIC !`;
 	}
 }
 
 class Warrior extends Character {
 	constructor(id, name, img) {
 		super(id, name, img);
-		this.id = id++;
-		this.name = name;
 		this.health = 750;
 		this.strength = 150;
 		this.defense = 500;
 		this.magic = 0;
-		this.img = img;
-	}
-	heal() {
-		if (this.magic <= 0) {
-			return alert("You have no magic left !");
-		}
-		const healed = 150;
-		this.health += healed;
-		this.magic -= healed;
-		alert(`You healed ${healed} HEALTH and lost ${healed} MAGIC !`);
 	}
 }
-// class MagicSpells extends Character{
-// 	constructor(id, name) {
-// 		this.id = id++
-// 		this.name = name
-// 	}
-// 	healSpell() {
-
-// 	}
-// }

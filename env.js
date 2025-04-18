@@ -3,13 +3,17 @@ const howBtn = document.querySelector("#howBtn");
 const startBtn = document.querySelector("#startBtn");
 const attackBtn = document.querySelector("#attackBtn");
 const healBtn = document.querySelector("#healBtn");
+const blockBtn = document.querySelector("#blockBtn");
+const magicBtn = document.querySelector("#magicBtn");
 const main = document.querySelector("main");
 const audio = document.querySelector("audio");
 const comingSoon = document.querySelectorAll(".coming-soon");
 const fightingContainer = document.querySelector("#fighting-container");
-let healthBar = document.querySelector(".health-bar");
-let magicBar = document.querySelector(".magic-bar");
-let fightCommentary = document.querySelector("#fight-commentary")
+let playerHealth = document.querySelector(".health-bar");
+let playerMagic = document.querySelector("#player-magic");
+let enemyHealth = document.querySelector("#enemy-health");
+let enemyMagic = document.querySelector("#enemy-magic");
+let fightCommentary = document.querySelector("#fight-commentary");
 
 //Scores declarations
 let score = 0;
