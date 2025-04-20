@@ -80,16 +80,30 @@ const checkGameOver = () => {
 
 const enemyPlay = () => {
 	setTimeout(() => {
-		if (enemy.health <= 250 && enemy.magic >= 150) {
-			enemy.heal();
-			playSfx("./assets/health-sfx.mp3", 0.4);
-		} else if (enemy.magic >= 150) {
-			enemy.magicAttack(player);
-			playSfx("./assets/magic-sfx.mp3", 0.2);
-		} else {
-			enemy.attack(player);
-			playSfx("./assets/sword-sfx.mp3", 0.2);
+		if (enemy instanceof Character || enemy instanceof Mage) {
+			if (enemy.health <= 250 && enemy.magic >= 150) {
+				enemy.heal();
+				playSfx("./assets/health-sfx.mp3", 0.4);
+			} else if (enemy.magic >= 150) {
+				enemy.magicAttack(player);
+				playSfx("./assets/magic-sfx.mp3", 0.2);
+			} else {
+				enemy.attack(player);
+				playSfx("./assets/sword-sfx.mp3", 0.2);
+			}
+		} else if (enemy instanceof Warrior) {
+			if (enemy.health <= 250 && enemy.magic >= 150) {
+				enemy.heal();
+				playSfx("./assets/health-sfx.mp3", 0.4);
+			} else if (enemy.magic >= 150) {
+				enemy.attack(player);
+				playSfx("./assets/sword-sfx.mp3", 0.2);
+			} else {
+				enemy.magicAttack(player);
+				playSfx("./assets/magic-sfx.mp3", 0.2);
+			}
 		}
+
 		updateUI();
 		checkGameOver();
 		playerTurn = true;
@@ -97,6 +111,7 @@ const enemyPlay = () => {
 };
 
 attackBtn.addEventListener("click", () => {
+	if (checkGameOver()) return;
 	if (!playerTurn) {
 		return;
 	}
@@ -111,6 +126,7 @@ attackBtn.addEventListener("click", () => {
 });
 
 healBtn.addEventListener("click", () => {
+	if (checkGameOver()) return;
 	if (!playerTurn) return;
 	player.heal();
 	playSfx("./assets/health-sfx.mp3", 0.4);
@@ -120,6 +136,7 @@ healBtn.addEventListener("click", () => {
 });
 
 magicBtn.addEventListener("click", () => {
+	if (checkGameOver()) return;
 	if (!playerTurn) return;
 	player.magicAttack(enemy);
 	playSfx("./assets/magic-sfx.mp3", 0.2);

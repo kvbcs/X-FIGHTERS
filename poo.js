@@ -5,7 +5,8 @@ class Character {
 		this.maxHealth = 1000;
 		this.health = this.maxHealth;
 		this.strength = 100;
-		this.magic = 600;
+		this.maxMagic = 600;
+		this.magic = this.maxMagic;
 		this.img = img;
 	}
 	attack(target) {
@@ -26,8 +27,7 @@ class Character {
 	magicAttack(target) {
 		const spell = 150;
 		if (this.magic < spell) {
-			fightCommentary.textContent = `${this.name} doesn’t have enough magic!`;
-			return;
+			return (fightCommentary.textContent = `${this.name} doesn’t have enough magic!`);
 		}
 		this.magic -= spell;
 		target.health -= spell;
