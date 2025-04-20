@@ -9,9 +9,13 @@ selectedCharacters = JSON.parse(localStorage.getItem("characters")).map(
 		}
 	}
 );
-
 const player = selectedCharacters[0];
 const enemy = selectedCharacters[1];
+
+playerHealth.max = player.maxHealth;
+playerMagic.max = player.maxMagic;
+enemyHealth.max = enemy.maxHealth;
+enemyMagic.max = enemy.maxMagic;
 
 const updateUI = () => {
 	playerHealth.value = player.health;

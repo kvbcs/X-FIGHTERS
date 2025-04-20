@@ -2,14 +2,15 @@ class Character {
 	constructor(id, name, img) {
 		this.id = id++;
 		this.name = name;
-		this.health = 1000;
+		this.maxHealth = 1000;
+		this.health = this.maxHealth;
 		this.strength = 100;
 		this.magic = 600;
 		this.img = img;
 	}
 	attack(target) {
 		target.health -= this.strength;
-
+		enemyHealth.value -= this.strength;
 		fightCommentary.textContent = `${this.name} attacks ! ${target.name} lost ${this.strength} HP !`;
 	}
 	heal() {
@@ -36,17 +37,21 @@ class Character {
 class Mage extends Character {
 	constructor(id, name, img) {
 		super(id, name, img);
-		this.health = 750;
+		this.maxHealth = 750;
+		this.health = this.maxHealth;
 		this.strength = 50;
-		this.magic = 1000;
+		this.maxMagic = 1000;
+		this.magic = this.maxMagic;
 	}
 }
 
 class Warrior extends Character {
 	constructor(id, name, img) {
 		super(id, name, img);
-		this.health = 500;
+		this.maxHealth = 500;
+		this.health = this.maxHealth;
 		this.strength = 200;
-		this.magic = 450;
+		this.maxMagic = 450;
+		this.magic = this.maxMagic;
 	}
 }

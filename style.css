@@ -185,21 +185,49 @@ article {
 	width: 50%;
 	display: flex;
 	flex-direction: column;
+	justify-content: space-evenly;
 	gap: 0px;
 }
-#player-health,
-#enemy-health {
-	background-color: green;
+
+progress {
 	width: 100%;
-	height: 30%;
+	height: 20px;
 	border-radius: 20px;
+	transition: all 0.4s ease-in-out;
 	border: 2px solid black;
 	box-shadow: 1px 1px 10px black;
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: transparent;
+	overflow: hidden;
 }
 
+progress::-webkit-progress-bar {
+	background-color: #2c2c2c;
+	border-radius: 20px;
+}
+#player-health::-webkit-progress-value,
+#enemy-health::-webkit-progress-value {
+	background-color: rgb(0, 221, 0);
+}
+#player-magic::-webkit-progress-value,
+#enemy-magic::-webkit-progress-value {
+	background-color: rgb(0, 115, 255);
+}
+
+#player-health::-webkit-progress-bar,
+#enemy-health::-webkit-progress-bar {
+	background-color: rgb(100, 0, 0);
+	border-radius: 20px;
+}
+#player-magic::-webkit-progress-bar,
+#enemy-magic::-webkit-progress-bar {
+	background-color: rgb(100, 0, 0);
+	border-radius: 20px;
+}
 
 #fight-commentary {
-	font-size: 1.3em;
+	font-size: 0.9em;
 	text-align: center;
 	font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
 		"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
