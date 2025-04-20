@@ -30,7 +30,7 @@ const addSelectCharacter = (character) => {
 	let computerChoice = playableCharacters[randomIndex];
 
 	selectedCharacters.push(computerChoice);
-	fightCommentary.textContent = `You selected ${character.name} and the AI selected ${computerChoice.name}`;
+	fightCommentary.textContent = `You picked ${character.name}, AI selected ${computerChoice.name}`;
 };
 
 startBtn.addEventListener("click", () => {

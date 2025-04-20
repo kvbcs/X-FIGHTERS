@@ -5,7 +5,7 @@ class Character {
 		this.maxHealth = 1000;
 		this.health = this.maxHealth;
 		this.strength = 100;
-		this.maxMagic = 600;
+		this.maxMagic = 850;
 		this.magic = this.maxMagic;
 		this.img = img;
 	}
@@ -15,17 +15,16 @@ class Character {
 		fightCommentary.textContent = `${this.name} attacks ! ${target.name} lost ${this.strength} HP !`;
 	}
 	heal() {
-		if (this.magic < 150) {
+
+		if (this.magic < healed) {
 			return (fightCommentary.textContent = `${this.name} has not enough magic left !`);
 		}
-		const healed = 150;
 		this.health += healed;
 		this.magic -= healed;
 		fightCommentary.textContent = `${this.name} healed ${healed} HP and lost ${healed} MP !`;
 	}
 
 	magicAttack(target) {
-		const spell = 150;
 		if (this.magic < spell) {
 			return (fightCommentary.textContent = `${this.name} doesn’t have enough magic!`);
 		}
@@ -37,9 +36,9 @@ class Character {
 class Mage extends Character {
 	constructor(id, name, img) {
 		super(id, name, img);
-		this.maxHealth = 750;
+		this.maxHealth = 850;
 		this.health = this.maxHealth;
-		this.strength = 50;
+		this.strength = 75;
 		this.maxMagic = 1000;
 		this.magic = this.maxMagic;
 	}
@@ -48,10 +47,10 @@ class Mage extends Character {
 class Warrior extends Character {
 	constructor(id, name, img) {
 		super(id, name, img);
-		this.maxHealth = 500;
+		this.maxHealth = 1150;
 		this.health = this.maxHealth;
-		this.strength = 200;
-		this.maxMagic = 450;
+		this.strength = 125;
+		this.maxMagic = 700;
 		this.magic = this.maxMagic;
 	}
 }

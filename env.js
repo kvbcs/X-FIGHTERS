@@ -14,13 +14,16 @@ let playerMagic = document.querySelector("#player-magic");
 let enemyHealth = document.querySelector("#enemy-health");
 let enemyMagic = document.querySelector("#enemy-magic");
 let fightCommentary = document.querySelector("#fight-commentary");
-
-//Scores declarations
-let score = 0;
-let winCounter = 0;
-let lossCounter = 0;
+let scoreText = document.querySelector("#score-text");
 
 //Divers
+		const spell = 125;
+		const healed = 150;
+
+let score = parseInt(localStorage.getItem("score")) || 0;
+scoreText.textContent = score;
+
+console.log(score);
 let id = 1;
 audio.volume = 0.2;
 let selectedCharacters = [];

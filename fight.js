@@ -12,11 +12,28 @@ selectedCharacters = JSON.parse(localStorage.getItem("characters")).map(
 const player = selectedCharacters[0];
 const enemy = selectedCharacters[1];
 
+selectedCharacters.forEach((character) => {
+	//Création d'éléments
+	div = document.createElement("div");
+	img = document.createElement("img");
+
+	//Style et attributs
+	div.classList.add("fighter-div");
+	div.setAttribute("id", selectedCharacters.indexOf(character));
+	img.src = character.img;
+
+	//Ajout des éléments
+	div.appendChild(img);
+	fightingContainer.appendChild(div);
+});
+
+//Attributions des vies au barres de progress
 playerHealth.max = player.maxHealth;
 playerMagic.max = player.maxMagic;
 enemyHealth.max = enemy.maxHealth;
 enemyMagic.max = enemy.maxMagic;
 
+//Fonction qui met à jour les barres de vies
 const updateUI = () => {
 	playerHealth.value = player.health;
 	enemyHealth.value = enemy.health;
@@ -24,6 +41,7 @@ const updateUI = () => {
 	enemyMagic.value = enemy.magic;
 };
 
+//Fonction pour jouer de l'audio à chaque action
 const playSfx = (src, volume) => {
 	const audio = document.createElement("audio");
 	audio.src = src;
@@ -37,26 +55,33 @@ const playSfx = (src, volume) => {
 };
 
 const checkGameOver = () => {
-	console.log(selectedCharacters);
-
 	//Vérif du gagnant avec ternaire
 	if (player.health <= 0 || enemy.health <= 0) {
 		const winner =
+			//Si les 2 sont à 0, personne gagne
 			player.health <= 0 && enemy.health <= 0
 				? "Nobody"
-				: player.health > 0
+				: //Si l'ennemi est à 0 et pas le joueur, joueur gagne
+				player.health > 0 && enemy.health <= 0
 				? player.name
-				: enemy.name;
+				: //Sinon, l'ennemi
+				  enemy.name;
 		if (winner === "Nobody") {
 			audio.src = "/assets/game-over.mp3";
 			audio.removeAttribute("loop");
 		} else if (winner === player.name) {
+			score++;
 			audio.src = "/assets/victory-sfx.mp3";
 			audio.removeAttribute("loop");
 		} else {
+			score--;
 			audio.src = "/assets/game-over.mp3";
 			audio.removeAttribute("loop");
 		}
+		localStorage.setItem("score", score);
+		scoreText.textContent = score;
+
+		console.log(score);
 
 		fightCommentary.textContent = `${winner} wins the fight!`;
 
@@ -81,10 +106,10 @@ const checkGameOver = () => {
 const enemyPlay = () => {
 	setTimeout(() => {
 		if (enemy instanceof Character || enemy instanceof Mage) {
-			if (enemy.health <= 250 && enemy.magic >= 150) {
+			if (enemy.health <= 250 && enemy.magic >= healed) {
 				enemy.heal();
 				playSfx("./assets/health-sfx.mp3", 0.4);
-			} else if (enemy.magic >= 150) {
+			} else if (enemy.magic >= spell) {
 				enemy.magicAttack(player);
 				playSfx("./assets/magic-sfx.mp3", 0.2);
 			} else {
@@ -92,7 +117,7 @@ const enemyPlay = () => {
 				playSfx("./assets/sword-sfx.mp3", 0.2);
 			}
 		} else if (enemy instanceof Warrior) {
-			if (enemy.health <= 250 && enemy.magic >= 150) {
+			if (enemy.health <= 250 && enemy.magic >= healed) {
 				enemy.heal();
 				playSfx("./assets/health-sfx.mp3", 0.4);
 			} else if (enemy.magic >= 150) {
@@ -106,6 +131,14 @@ const enemyPlay = () => {
 
 		updateUI();
 		checkGameOver();
+		if (player.magic < player.maxMagic) {
+			player.magic += 50;
+		}
+		if (enemy.magic < enemy.maxMagic) {
+			enemy.magic += 50;
+		}
+		console.log(player.magic, enemy.magic);
+
 		playerTurn = true;
 	}, 1500);
 };
@@ -143,19 +176,4 @@ magicBtn.addEventListener("click", () => {
 	updateUI();
 	playerTurn = false;
 	if (!checkGameOver()) enemyPlay();
-});
-
-selectedCharacters.forEach((character) => {
-	//Création d'éléments
-	div = document.createElement("div");
-	img = document.createElement("img");
-
-	//Style et attributs
-	div.classList.add("fighter-div");
-	div.setAttribute("id", selectedCharacters.indexOf(character));
-	img.src = character.img;
-
-	//Ajout des éléments
-	div.appendChild(img);
-	fightingContainer.appendChild(div);
 });
