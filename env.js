@@ -6,7 +6,7 @@ const healBtn = document.querySelector("#healBtn");
 const blockBtn = document.querySelector("#blockBtn");
 const magicBtn = document.querySelector("#magicBtn");
 const main = document.querySelector("main");
-const audio = document.querySelector("audio");
+let audio = document.querySelector("audio");
 const comingSoon = document.querySelectorAll(".coming-soon");
 const fightingContainer = document.querySelector("#fighting-container");
 let playerHealth = document.querySelector("#player-health");
@@ -15,15 +15,18 @@ let enemyHealth = document.querySelector("#enemy-health");
 let enemyMagic = document.querySelector("#enemy-magic");
 let fightCommentary = document.querySelector("#fight-commentary");
 let scoreText = document.querySelector("#score-text");
+let menuTheme = document.querySelector("#menu-theme");
 
 //Divers
-		const spell = 125;
-		const healed = 150;
-
+let hitChance = [1, 1.1, 1.2, 1.3, 1.4, 1.5];
+const getRandomItem = (arr) => {
+	const index = Math.floor(Math.random() * arr.length);
+	return arr[index];
+};
+const spell = 125 ;
+const healed = 150 ;
 let score = parseInt(localStorage.getItem("score")) || 0;
 scoreText.textContent = score;
-
-console.log(score);
 let id = 1;
 audio.volume = 0.2;
 let selectedCharacters = [];

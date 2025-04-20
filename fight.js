@@ -128,16 +128,21 @@ const enemyPlay = () => {
 				playSfx("./assets/magic-sfx.mp3", 0.2);
 			}
 		}
-
-		updateUI();
-		checkGameOver();
 		if (player.magic < player.maxMagic) {
-			player.magic += 50;
+			const criticalHit = getRandomItem(hitChance);
+			console.log(criticalHit);
+
+			player.magic += 50 * criticalHit;
 		}
 		if (enemy.magic < enemy.maxMagic) {
-			enemy.magic += 50;
+			const criticalHit = getRandomItem(hitChance);
+			console.log(criticalHit);
+
+			enemy.magic += 50 * criticalHit;
 		}
 		console.log(player.magic, enemy.magic);
+		updateUI();
+		checkGameOver();
 
 		playerTurn = true;
 	}, 1500);
