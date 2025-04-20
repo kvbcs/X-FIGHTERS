@@ -5,20 +5,18 @@ class Character {
 		this.maxHealth = 1000;
 		this.health = this.maxHealth;
 		this.strength = 100;
-		this.maxMagic = 750;
+		this.maxMagic = 850;
 		this.magic = this.maxMagic;
 		this.img = img;
 	}
 	attack(target) {
 		const criticalHit = getRandomItem(hitChance);
-		console.log("attack", criticalHit);
 		const attackValue = this.strength * criticalHit;
 		target.health -= attackValue;
 		fightCommentary.textContent = `${this.name} attacks ! ${target.name} lost ${attackValue} HP !`;
 	}
 	heal() {
 		const criticalHit = getRandomItem(hitChance);
-		console.log("heal", criticalHit);
 		if (this.magic < healed) {
 			return (fightCommentary.textContent = `${this.name} has not enough magic left !`);
 		}
@@ -30,7 +28,6 @@ class Character {
 
 	magicAttack(target) {
 		const criticalHit = getRandomItem(hitChance);
-		console.log("magic", criticalHit);
 		if (this.magic < spell) {
 			return (fightCommentary.textContent = `${this.name} doesn’t have enough magic!`);
 		}
@@ -43,10 +40,10 @@ class Character {
 class Mage extends Character {
 	constructor(id, name, img) {
 		super(id, name, img);
-		this.maxHealth = 850;
+		this.maxHealth = 1150;
 		this.health = this.maxHealth;
 		this.strength = 75;
-		this.maxMagic = 1150;
+		this.maxMagic = 1000;
 		this.magic = this.maxMagic;
 	}
 }
@@ -54,10 +51,21 @@ class Mage extends Character {
 class Warrior extends Character {
 	constructor(id, name, img) {
 		super(id, name, img);
-		this.maxHealth = 1150;
+		this.maxHealth = 850;
 		this.health = this.maxHealth;
 		this.strength = 125;
-		this.maxMagic = 500;
+		this.maxMagic = 700;
+		this.magic = this.maxMagic;
+	}
+}
+
+class Brawler extends Character {
+	constructor(id, name, img) {
+		super(id, name, img);
+		this.maxHealth = 700;
+		this.health = this.maxHealth;
+		this.strength = 150;
+		this.maxMagic = 1000;
 		this.magic = this.maxMagic;
 	}
 }

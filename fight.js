@@ -4,11 +4,15 @@ selectedCharacters = JSON.parse(localStorage.getItem("characters")).map(
 			return new Mage(charData.id, charData.name, charData.img);
 		} else if (charData.type === "Warrior") {
 			return new Warrior(charData.id, charData.name, charData.img);
+		} else if (charData.type === "Brawler") {
+			return new Brawler(charData.id, charData.name, charData.img);
 		} else {
 			return new Character(charData.id, charData.name, charData.img);
 		}
 	}
 );
+console.log(selectedCharacters);
+
 const player = selectedCharacters[0];
 const enemy = selectedCharacters[1];
 
@@ -41,6 +45,19 @@ const updateUI = () => {
 	enemyMagic.value = enemy.magic;
 };
 
+//Fonction de régénération de magic à chaque tour
+const regenMagic = () => {
+	if (player.magic < player.maxMagic) {
+		const criticalHit = getRandomItem(hitChance);
+		player.magic += 50 * criticalHit;
+	}
+	if (enemy.magic < enemy.maxMagic) {
+		const criticalHit = getRandomItem(hitChance);
+
+		enemy.magic += 50 * criticalHit;
+	}
+};
+
 const checkGameOver = () => {
 	//Vérif du gagnant avec ternaire
 	if (player.health <= 0 || enemy.health <= 0) {
@@ -67,9 +84,6 @@ const checkGameOver = () => {
 		}
 		localStorage.setItem("score", score);
 		scoreText.textContent = score;
-
-		console.log(score);
-
 		fightCommentary.textContent = `${winner} wins the fight!`;
 
 		setTimeout(() => {
@@ -93,7 +107,13 @@ const checkGameOver = () => {
 const enemyPlay = () => {
 	setTimeout(() => {
 		if (enemy instanceof Character || enemy instanceof Mage) {
-			if (enemy.health <= 250 && enemy.magic >= healed) {
+			if (player.health <= 150 && enemy.magic >= spell) {
+				enemy.magicAttack(player);
+				playSfx("./assets/magic-sfx.mp3", 0.2);
+			} else if (player.health <= 75) {
+				enemy.attack(player);
+				playSfx("./assets/sword-sfx.mp3", 0.2);
+			} else if (enemy.health <= 250 && enemy.magic >= healed) {
 				enemy.heal();
 				playSfx("./assets/health-sfx.mp3", 0.4);
 			} else if (enemy.magic >= spell) {
@@ -103,31 +123,22 @@ const enemyPlay = () => {
 				enemy.attack(player);
 				playSfx("./assets/sword-sfx.mp3", 0.2);
 			}
-		} else if (enemy instanceof Warrior) {
+		} else if (enemy instanceof Warrior || enemy instanceof Brawler) {
 			if (enemy.health <= 250 && enemy.magic >= healed) {
 				enemy.heal();
 				playSfx("./assets/health-sfx.mp3", 0.4);
-			} else if (enemy.magic >= 150) {
+			} else if (player.health <= 125 || enemy instanceof Brawler) {
 				enemy.attack(player);
 				playSfx("./assets/sword-sfx.mp3", 0.2);
-			} else {
+			} else if (enemy instanceof Warrior && enemy.magic >= spell) {
 				enemy.magicAttack(player);
 				playSfx("./assets/magic-sfx.mp3", 0.2);
+			} else {
+				enemy.attack(player);
+				playSfx("./assets/sword-sfx.mp3", 0.2);
 			}
 		}
-		if (player.magic < player.maxMagic) {
-			const criticalHit = getRandomItem(hitChance);
-			console.log(criticalHit);
-
-			player.magic += 50 * criticalHit;
-		}
-		if (enemy.magic < enemy.maxMagic) {
-			const criticalHit = getRandomItem(hitChance);
-			console.log(criticalHit);
-
-			enemy.magic += 50 * criticalHit;
-		}
-		console.log(player.magic, enemy.magic);
+		regenMagic();
 		updateUI();
 		checkGameOver();
 

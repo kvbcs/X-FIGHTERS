@@ -50,6 +50,7 @@ startBtn.addEventListener("click", () => {
 		let type = "Character";
 		if (char instanceof Mage) type = "Mage";
 		else if (char instanceof Warrior) type = "Warrior";
+		else if (char instanceof Brawler) type = "Brawler";
 
 		return {
 			...char,
