@@ -1,26 +1,14 @@
 let playableCharacters = [
-	(DrumCat = new Character(id++, "Drum Cat", "/assets/cat.gif")),
-	(HollowKnight = new Warrior(
-		id++,
-		"Hollow Knight",
-		"/assets/hollow-knight.gif"
-	)),
+	(RedMage = new Mage(id++, "Red Mage", "/assets/red-mage.gif")),
+	(BookMage = new Mage(id++, "Book Mage", "/assets/book-mage.gif")),
 	(DarkMage = new Mage(id++, "Dark Mage", "/assets/dark-mage.gif")),
+	(Wizard = new Mage(id++, "Wizard", "/assets/wizard.gif")),
+	(ChunLi = new Warrior(id++, "Chun-Li", "/assets/chunli.gif")),
 	(Kratos = new Warrior(id++, "Kratos", "/assets/kratos.gif")),
+	(Cloud = new Warrior(id++, "Cloud", "/assets/cloud.gif")),
+	(Link = new Warrior(id++, "Link", "/assets/link.gif")),
 	(Goku = new Character(id++, "Son Goku", "/assets/goku.gif")),
-	(Skeleton = new Warrior(
-		id++,
-		"Skeleton",
-		"/assets/Skeleton/GIFS/Skeleton Idle.gif"
-	)),
-	(Mario = new Character(
-		id++,
-		"Mario",
-		"https://i.pinimg.com/originals/f5/75/2c/f5752c7c9f03832209f0bb8b57214281.gif"
-	)),
-	(Sonic = new Character(
-		id++,
-		"Sonic",
-		"https://media.tenor.com/oir5PjIye9sAAAAj/sonic.gif"
-	)),
+	(Mario = new Character(id++, "Mario", "/assets/mario.gif")),
+	(Sonic = new Character(id++, "Sonic", "/assets/sonic.gif")),
+	(Jinx = new Character(id++, "Jinx", "/assets/jinx.gif")),
 ];

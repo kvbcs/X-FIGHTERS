@@ -9,7 +9,7 @@ const main = document.querySelector("main");
 const audio = document.querySelector("audio");
 const comingSoon = document.querySelectorAll(".coming-soon");
 const fightingContainer = document.querySelector("#fighting-container");
-let playerHealth = document.querySelector(".health-bar");
+let playerHealth = document.querySelector("#player-health");
 let playerMagic = document.querySelector("#player-magic");
 let enemyHealth = document.querySelector("#enemy-health");
 let enemyMagic = document.querySelector("#enemy-magic");
@@ -35,8 +35,6 @@ comingSoon.forEach((e) => {
 
 howBtn.addEventListener("click", () => {
 	alert(
-		"Click the 1 player button, choose 1 fighter to start the game then click start game. You can attack or heal to defeat your opponent."
+		"1) Click the Player vs AI button 2) Choose 1 fighter then click Start game 3) Click Attack, Heal or Magic to defeat your opponent 4) When the fight ends, write yes or no on the replay prompt"
 	);
 });
-
-

@@ -11,12 +11,15 @@
 	#btn-container {
 		width: 400px;
 	}
+	#characterContainer {
+		width: 90%;
+	}
 	.character-div {
 		width: 300px;
 		height: 300px;
 		&:hover {
 			cursor: pointer;
-			scale: 125%;
+			scale: 110%;
 			background-color: gray;
 			transition: 0.2s ease-in-out;
 		}

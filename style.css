@@ -86,6 +86,12 @@ main {
 	gap: 15px;
 	width: 80%;
 }
+
+#btn-container > audio {
+	width: 100%;
+	box-shadow: 1px 1px 10px black;
+	border-radius: 25px;
+}
 .menu-btn {
 	width: 100%;
 	background-color: gold;
@@ -94,14 +100,27 @@ main {
 	box-shadow: 1px 1px 10px black;
 }
 
-h2 {
+#select-title {
+	position: sticky;
+	top: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
+	min-height: 10vh;
+	height: fit-content;
+	width: 90%;
 	margin-top: 25px;
 	color: black;
 	font-weight: 900;
-	font-size: 1.5em;
 	background-color: white;
-	padding: 20px;
+	padding: 10px;
 	border-radius: 20px;
+	box-shadow: 1px 1px 10px black;
+	border: 3px solid black;
+}
+#select-title > span {
+	font-size: 0.8em;
 }
 
 #characterContainer {
@@ -125,7 +144,9 @@ h2 {
 	object-fit: cover;
 	border-radius: 20px;
 	padding: 20px;
+	box-shadow: 1px 1px 10px black;
 }
+
 .character-div > img {
 	height: 100%;
 	width: 100%;
@@ -167,29 +188,15 @@ article {
 	gap: 0px;
 }
 #player-health,
-#enemy-health,
-#player-magic,
-#enemy-magic {
-	background-color: black;
+#enemy-health {
+	background-color: green;
 	width: 100%;
-	height: 50%;
+	height: 30%;
 	border-radius: 20px;
 	border: 2px solid black;
 	box-shadow: 1px 1px 10px black;
-	padding: 2px;
 }
-.health-bar {
-	background-color: rgb(0, 197, 0);
-	width: 100%;
-	height: 100%;
-	border-radius: 20px;
-}
-.magic-bar {
-	background-color: rgb(0, 81, 255);
-	width: 100%;
-	height: 100%;
-	border-radius: 20px;
-}
+
 
 #fight-commentary {
 	font-size: 1.3em;
@@ -197,10 +204,6 @@ article {
 	font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
 		"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 	font-weight: 900;
-}
-
-.rotate {
-	transform: rotateY(180deg);
 }
 
 footer {
