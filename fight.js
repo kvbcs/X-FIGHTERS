@@ -41,19 +41,6 @@ const updateUI = () => {
 	enemyMagic.value = enemy.magic;
 };
 
-//Fonction pour jouer de l'audio à chaque action
-const playSfx = (src, volume) => {
-	const audio = document.createElement("audio");
-	audio.src = src;
-	audio.autoplay = true;
-	audio.volume = volume;
-
-	audio.addEventListener("ended", () => {
-		audio.remove();
-	});
-	fightingContainer.appendChild(audio);
-};
-
 const checkGameOver = () => {
 	//Vérif du gagnant avec ternaire
 	if (player.health <= 0 || enemy.health <= 0) {

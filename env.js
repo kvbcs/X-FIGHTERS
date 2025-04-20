@@ -23,8 +23,8 @@ const getRandomItem = (arr) => {
 	const index = Math.floor(Math.random() * arr.length);
 	return arr[index];
 };
-const spell = 125 ;
-const healed = 150 ;
+const spell = 125;
+const healed = 150;
 let score = parseInt(localStorage.getItem("score")) || 0;
 scoreText.textContent = score;
 let id = 1;
@@ -44,3 +44,16 @@ howBtn.addEventListener("click", () => {
 		"1) Click the Player vs AI button 2) Choose 1 fighter then click Start game 3) Click Attack, Heal or Magic to defeat your opponent 4) When the fight ends, write yes or no on the replay prompt"
 	);
 });
+
+//Fonction pour jouer de l'audio à chaque action
+const playSfx = (src, volume) => {
+	const audio = document.createElement("audio");
+	audio.src = src;
+	audio.autoplay = true;
+	audio.volume = volume;
+
+	audio.addEventListener("ended", () => {
+		audio.remove();
+	});
+	main.appendChild(audio);
+};

@@ -251,3 +251,15 @@ footer {
 	align-items: center;
 	color: white;
 }
+
+footer > p {
+	color: gray;
+	padding: 0 20px;
+	text-align: center;
+	font-size: 0.8em;
+}
+
+a {
+	color: gold;
+	font-weight: 900;
+}

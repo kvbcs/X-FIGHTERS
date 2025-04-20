@@ -12,17 +12,24 @@ playableCharacters.forEach((character) => {
 	div.appendChild(img);
 	characterContainer.appendChild(div);
 
-	div.addEventListener("click", () => {
+	div.addEventListener("click", (e) => {
+		document.querySelectorAll(".character-div").forEach((element) => {
+			element.style.backgroundColor = "";
+		});
+		e.currentTarget.style.backgroundColor = "gold";
+
 		addSelectCharacter(character);
 	});
 });
 
 const addSelectCharacter = (character) => {
 	if (selectedCharacters[0] === character) {
+		playSfx("/assets/error-cta.mp3", 0.5);
 		return (fightCommentary.textContent = `You already chose ${character.name} !`);
 	} else if (selectedCharacters.length >= 0) {
 		selectedCharacters = [];
 	}
+	playSfx("/assets/coin.mp3", 1);
 	selectedCharacters.push(character);
 
 	// Choix aléatoire d’un personnage dans le tableau
@@ -30,11 +37,12 @@ const addSelectCharacter = (character) => {
 	let computerChoice = playableCharacters[randomIndex];
 
 	selectedCharacters.push(computerChoice);
-	fightCommentary.textContent = `You picked ${character.name}, AI selected ${computerChoice.name}`;
+	fightCommentary.textContent = `You picked ${character.name}, AI picked ${computerChoice.name}`;
 };
 
 startBtn.addEventListener("click", () => {
 	if (selectedCharacters.length <= 0) {
+		playSfx("/assets/error-cta.mp3", 0.5);
 		return (fightCommentary.textContent = "Please choose a fighter !");
 	}
 	// Ajouter le type à chaque personnage
