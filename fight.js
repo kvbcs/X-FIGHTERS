@@ -11,10 +11,22 @@ selectedCharacters = JSON.parse(localStorage.getItem("characters")).map(
 		}
 	}
 );
-console.log(selectedCharacters);
 
 const player = selectedCharacters[0];
 const enemy = selectedCharacters[1];
+
+const randomTurn = () => {
+	let random = Math.floor(Math.random() * 2) + 1;
+	if (random === 1) {
+		fightCommentary.textContent = `It's ${player.name}'s turn !`;
+		return true;
+	} else {
+		fightCommentary.textContent = `It's ${enemy.name}'s turn !`;
+		return false;
+	}
+};
+
+let playerTurn = randomTurn();
 
 selectedCharacters.forEach((character) => {
 	//Création d'éléments
@@ -145,6 +157,10 @@ const enemyPlay = () => {
 		playerTurn = true;
 	}, 1500);
 };
+
+if (!playerTurn) {
+	enemyPlay();
+}
 
 attackBtn.addEventListener("click", () => {
 	if (checkGameOver()) return;
