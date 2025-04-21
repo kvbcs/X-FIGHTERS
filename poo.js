@@ -40,7 +40,7 @@ class Character {
 class Mage extends Character {
 	constructor(id, name, img) {
 		super(id, name, img);
-		this.maxHealth = 850;
+		this.maxHealth = 1125;
 		this.health = this.maxHealth;
 		this.strength = 75;
 		this.maxMagic = 1000;
@@ -62,9 +62,9 @@ class Warrior extends Character {
 class Brawler extends Character {
 	constructor(id, name, img) {
 		super(id, name, img);
-		this.maxHealth = 1150;
+		this.maxHealth = 1000;
 		this.health = this.maxHealth;
-		this.strength = 150;
+		this.strength = 125;
 		this.maxMagic = 650;
 		this.magic = this.maxMagic;
 	}

@@ -97,6 +97,9 @@ const checkGameOver = () => {
 		localStorage.setItem("score", score);
 		scoreText.textContent = score;
 		fightCommentary.textContent = `${winner} wins the fight!`;
+		attackBtn.style.display = "none";
+		healBtn.style.display = "none";
+		magicBtn.style.display = "none";
 
 		setTimeout(() => {
 			let again = prompt(
