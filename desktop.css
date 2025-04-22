@@ -1,4 +1,4 @@
-@media only screen and (min-width: 376px) {
+@media (min-width: 376px) {
 	header {
 		justify-content: space-between;
 		padding: 0 30px;
