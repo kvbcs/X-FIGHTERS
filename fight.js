@@ -183,6 +183,8 @@ attackBtn.addEventListener("click", () => {
 healBtn.addEventListener("click", () => {
 	if (checkGameOver()) return;
 	if (!playerTurn) return;
+	
+	console.log(selectedCharacters);
 	player.heal();
 	playSfx("./assets/health-sfx.mp3", 0.4);
 	updateUI();

@@ -13,10 +13,11 @@
 	}
 	#characterContainer {
 		width: 90%;
+		gap: 50px;
 	}
 	.character-div {
-		width: 300px;
-		height: 300px;
+		width: 250px;
+		height: 250px;
 		&:hover {
 			cursor: pointer;
 			scale: 110%;

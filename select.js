@@ -29,7 +29,7 @@ const addSelectCharacter = (character) => {
 	} else if (selectedCharacters.length >= 0) {
 		selectedCharacters = [];
 	}
-	playSfx("/assets/coin.mp3", 1);
+	playSfx("/assets/coin.mp3", 0.8);
 	selectedCharacters.push(character);
 
 	// Choix aléatoire d’un personnage dans le tableau

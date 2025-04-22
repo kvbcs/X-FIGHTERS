@@ -20,6 +20,9 @@ class Character {
 		if (this.magic < healed) {
 			return (fightCommentary.textContent = `${this.name} has not enough magic left !`);
 		}
+		if (this.health >= this.maxHealth) {
+			return (fightCommentary.textContent = `${player.name}'s health is already maxed !`);
+		}
 		const healValue = healed * criticalHit;
 		this.health += healValue;
 		this.magic -= healed;
@@ -40,7 +43,7 @@ class Character {
 class Mage extends Character {
 	constructor(id, name, img) {
 		super(id, name, img);
-		this.maxHealth = 1125;
+		this.maxHealth = 1000;
 		this.health = this.maxHealth;
 		this.strength = 75;
 		this.maxMagic = 1000;
@@ -54,7 +57,7 @@ class Warrior extends Character {
 		this.maxHealth = 850;
 		this.health = this.maxHealth;
 		this.strength = 125;
-		this.maxMagic = 700;
+		this.maxMagic = 850;
 		this.magic = this.maxMagic;
 	}
 }
@@ -65,7 +68,7 @@ class Brawler extends Character {
 		this.maxHealth = 1000;
 		this.health = this.maxHealth;
 		this.strength = 125;
-		this.maxMagic = 650;
+		this.maxMagic = 700;
 		this.magic = this.maxMagic;
 	}
 }
