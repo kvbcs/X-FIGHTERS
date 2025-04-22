@@ -1,0 +1,74 @@
+@media only screen and(max-width: 375px) {
+	header {
+		justify-content: space-evenly;
+	}
+
+	header > a {
+		width: 40%;
+	}
+
+	#modal {
+		width: 90%;
+	}
+
+	#btn-container {
+		width: 70%;
+	}
+	#select-title {
+		width: 90vw;
+	}
+
+	.character-div {
+		height: 125px;
+		width: 40%;
+	}
+
+
+
+
+
+	aside {
+		width: 80dvw;
+		height: 7dvh;
+		
+	}
+
+	article {
+		height: 100%;
+		width: 50%;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+		gap: 0px;
+	}
+
+	#fight-commentary {
+		font-size: 0.9em;
+		text-align: center;
+		font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+			"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+		font-weight: 900;
+	}
+
+	footer {
+		min-height: 20vh;
+		max-height: fit-content;
+		font-size: 1em;
+		background-color: black;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+		align-items: center;
+		color: white;
+		text-align: center;
+		padding: 25px 0;
+		gap: 20px;
+	}
+
+	footer > p {
+		color: gray;
+		padding: 0 10px;
+		text-align: center;
+		font-size: 0.8em;
+	}
+}

@@ -2,7 +2,6 @@
 	header {
 		justify-content: space-between;
 		padding: 0 30px;
-		height: 10vh;
 	}
 	header > a {
 		height: 80%;
@@ -42,7 +41,6 @@
 	}
 	#select-title {
 		width: 500px;
-		z-index: 2;
 	}
 	#select-title > span {
 		font-size: 1.2em;
