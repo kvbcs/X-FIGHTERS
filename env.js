@@ -16,6 +16,7 @@ let enemyMagic = document.querySelector("#enemy-magic");
 let fightCommentary = document.querySelector("#fight-commentary");
 let scoreText = document.querySelector("#score-text");
 let menuTheme = document.querySelector("#menu-theme");
+let modal = document.querySelector("#modal-container");
 
 //Divers
 let hitChance = [1, 1.1, 1.2, 1.3, 1.4, 1.5];
@@ -39,9 +40,9 @@ comingSoon.forEach((e) => {
 });
 
 howBtn.addEventListener("click", () => {
-	alert(
-		"1) Click the Player vs AI button 2) Choose 1 fighter then click Start game 3) Click Attack, Heal or Magic to defeat your opponent 4) When the fight ends, write yes or no on the replay prompt"
-	);
+	console.log("allo");
+	
+modal.classList.remove("hidden")
 });
 
 //Fonction pour jouer de l'audio à chaque action
@@ -55,4 +56,8 @@ const playSfx = (src, volume) => {
 		audio.remove();
 	});
 	main.appendChild(audio);
+};
+
+const closeModal = () => {
+	modal.classList.add("hidden");
 };
