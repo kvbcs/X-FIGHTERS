@@ -8,15 +8,15 @@ X-Fighters is a 1 versus 1 turn by turn fighting game. Choose your fighter and d
 
 1. Click the Player VS AI button to redirect to the character selection screen.
 
-![Menu Screen](/main-menu.PNG)
+![Menu Screen](/rendus/main-menu.PNG)
 
 2. Pick a fighter from the selection, each character has different statistics so pick wisely !
 
-![Select Screen](/select-menu.PNG)
+![Select Screen](/rendus/select-menu.PNG)
 
 3. Click each button to do different actions :
 
-![Fight Screen](/fight-menu.PNG)
+![Fight Screen](/rendus/fight-menu.PNG)
 
 #### a. Attack : Inflict physical damage to your opponent
 
@@ -28,7 +28,7 @@ X-Fighters is a 1 versus 1 turn by turn fighting game. Choose your fighter and d
 
 Once the game ends, enter "yes" or "no" on the prompt to either replay the match or quit to the character selector.
 
-![Fight Screen](/game-over.PNG)
+![Fight Screen](/rendus/game-over.PNG)
 
 ## Mechanics
 

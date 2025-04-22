@@ -12,6 +12,21 @@ selectedCharacters = JSON.parse(localStorage.getItem("characters")).map(
 	}
 );
 
+selectedCharacters.forEach((character) => {
+	//Création d'éléments
+	div = document.createElement("div");
+	img = document.createElement("img");
+
+	//Style et attributs
+	div.classList.add("fighter-div");
+	div.setAttribute("id", selectedCharacters.indexOf(character));
+	img.src = character.img;
+
+	//Ajout des éléments
+	div.appendChild(img);
+	fightingContainer.appendChild(div);
+});
+
 const player = selectedCharacters[0];
 const enemy = selectedCharacters[1];
 
@@ -27,21 +42,6 @@ const randomTurn = () => {
 };
 
 let playerTurn = randomTurn();
-
-selectedCharacters.forEach((character) => {
-	//Création d'éléments
-	div = document.createElement("div");
-	img = document.createElement("img");
-
-	//Style et attributs
-	div.classList.add("fighter-div");
-	div.setAttribute("id", selectedCharacters.indexOf(character));
-	img.src = character.img;
-
-	//Ajout des éléments
-	div.appendChild(img);
-	fightingContainer.appendChild(div);
-});
 
 //Attributions des vies au barres de progress
 playerHealth.max = player.maxHealth;
@@ -65,7 +65,6 @@ const regenMagic = () => {
 	}
 	if (enemy.magic < enemy.maxMagic) {
 		const criticalHit = getRandomItem(hitChance);
-
 		enemy.magic += 50 * criticalHit;
 	}
 };
@@ -83,6 +82,9 @@ const checkGameOver = () => {
 				: //Sinon, l'ennemi
 				  enemy.name;
 		if (winner === "Nobody") {
+			if (score > 0) {
+				score--;
+			}
 			audio.src = "/assets/game-over.mp3";
 			audio.removeAttribute("loop");
 		} else if (winner === player.name) {
@@ -90,7 +92,9 @@ const checkGameOver = () => {
 			audio.src = "/assets/victory-sfx.mp3";
 			audio.removeAttribute("loop");
 		} else {
-			score--;
+			if (score > 0) {
+				score--;
+			}
 			audio.src = "/assets/game-over.mp3";
 			audio.removeAttribute("loop");
 		}
@@ -156,7 +160,6 @@ const enemyPlay = () => {
 		regenMagic();
 		updateUI();
 		checkGameOver();
-
 		playerTurn = true;
 	}, 1500);
 };
@@ -183,8 +186,6 @@ attackBtn.addEventListener("click", () => {
 healBtn.addEventListener("click", () => {
 	if (checkGameOver()) return;
 	if (!playerTurn) return;
-	
-	console.log(selectedCharacters);
 	player.heal();
 	playSfx("./assets/health-sfx.mp3", 0.4);
 	updateUI();
