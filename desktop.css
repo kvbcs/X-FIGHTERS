@@ -7,6 +7,10 @@
 		height: 80%;
 		width: 400px;
 	}
+	#img-container {
+		width: 50%;
+		height: 30vh;
+	}
 	#btn-container {
 		width: 300px;
 	}
