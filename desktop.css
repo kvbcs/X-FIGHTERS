@@ -5,11 +5,14 @@
 	}
 	header > a {
 		height: 80%;
-		width: 400px;
+		width: 40%;
+	}
+	header > button {
+		font-size: 1em;
 	}
 	#img-container {
-		width: 50%;
-		height: 30vh;
+		width: 300px;
+		height: 100px;
 	}
 	#btn-container {
 		width: 300px;

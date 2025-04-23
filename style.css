@@ -44,8 +44,6 @@ header > a {
 #logo-container > img {
 	height: 100%;
 	width: 100%;
-	border-radius: 20px;
-	box-shadow: 1px 1px 10px black;
 }
 
 button {
@@ -246,7 +244,7 @@ h3 {
 aside {
 	display: flex;
 	flex-direction: row;
-	gap: 10px;
+	gap: 15px;
 	width: 80dvw;
 	height: 7dvh;
 }
@@ -319,7 +317,7 @@ footer {
 	align-items: center;
 	color: white;
 	text-align: center;
-	padding: 25px 0;
+	padding: 50px 0;
 	gap: 20px;
 }
 
