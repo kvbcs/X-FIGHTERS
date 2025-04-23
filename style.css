@@ -124,6 +124,8 @@ main {
 	display: flex;
 	flex-direction: column;
 	gap: 15px;
+			width: 70%;
+
 }
 
 h1 {
@@ -170,6 +172,8 @@ h3 {
 	text-align: center;
 	font-size: 0.8em;
 	z-index: 2;
+			width: 90vw;
+
 }
 
 #characterContainer {
@@ -192,6 +196,8 @@ h3 {
 	border-radius: 20px;
 	padding: 5px;
 	box-shadow: 1px 1px 10px black;
+	height: 125px;
+		width: 40%;
 }
 
 .character-div > img {
@@ -225,6 +231,8 @@ aside {
 	display: flex;
 	flex-direction: row;
 	gap: 10px;
+	width: 80dvw;
+		height: 7dvh;
 }
 
 article {
