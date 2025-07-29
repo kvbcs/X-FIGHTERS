@@ -103,7 +103,7 @@ main {
 }
 
 #modal {
-	height: 80dvh;
+	height: fit-content;
 	background-color: black;
 	color: white;
 	padding: 40px;
@@ -116,6 +116,34 @@ main {
 }
 #modal > p {
 	text-align: center;
+}
+
+ol {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+#replay-container {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	align-items: center;
+	justify-content: space-evenly;
+	margin-top: 20px;
+}
+
+small {
+	color: gold;
+	font-weight: bold;
+	font-style: italic;
+	font-size: 14px;
+}
+
+#quit {
+	background-color: red;
+	color: white;
 }
 
 #select-menu {

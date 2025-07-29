@@ -27,16 +27,25 @@
 						alt="X-Fighters logo" />
 				</div>
 				<p>
-					Bienvenue sur X-Fighters, un jeu de combat 1 vs 1 stratégique au tour par tour.
+					Bienvenue sur X-Fighters, un jeu de combat 1 vs 1
+					stratégique au tour par tour.
 				</p>
 				<h2>Comment jouer ?</h2>
 				<ol>
 					<li>Cliquer sur le mode de jeu "Joueur VS IA"</li>
-					<li>Choisissez un personnage de la sélection (les personnages ont différentes statistiques 😉)</li>
 					<li>
-						Cliquez sur les boutons "Attaquer", "Se soigner" et "Attaque Magique" pour faire différentes actions !
+						Choisissez un personnage de la sélection (les
+						personnages ont différentes statistiques 😉)
 					</li>
-					<small>Info : Chaque action a une chance de coup critique aléatoire ! Faites attention à vos barres de vie et magie !</small>
+					<li>
+						Cliquez sur les boutons "Attaquer", "Se soigner" et
+						"Attaque Magique" pour faire différentes actions !
+					</li>
+					<small
+						>Info : Chaque action a une chance de coup critique
+						aléatoire ! Faites attention à vos barres de vie et
+						magie !</small
+					>
 				</ol>
 				<button onclick="closeModal()">Fermer</button>
 			</div>
@@ -70,6 +79,17 @@
 				><button id="magicBtn">Attaque Magique</button>
 			</div>
 		</main>
+		<div
+			id="modal-container"
+			class="hidden replayModal">
+			<div id="modal">
+				<p>Voulez-vous rejouer ?</p>
+				<div id="replay-container">
+					<button id="replay">Rejouer</button
+					><button id="quit">Quitter</button>
+				</div>
+			</div>
+		</div>
 		<footer>
 			<audio
 				controls

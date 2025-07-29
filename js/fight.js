@@ -106,17 +106,18 @@ const checkGameOver = () => {
 		magicBtn.style.display = "none";
 
 		setTimeout(() => {
-			let again = prompt(
-				"Voulez-vous rejouer ?"
-			).toLowerCase();
-			while (again !== "oui" && again !== "non") {
-				again = prompt("Ecrivez 'oui' ou 'non'").toLowerCase();
-			}
-			if (again === "oui") {
-				location.reload();
-			} else {
-				location.href = "/select.html";
-			}
+			let replayModal = document.querySelector(".replayModal");
+			replayModal.classList.remove("hidden");
+			let replay = document.querySelector("#replay");
+			let quit = document.querySelector("#quit");
+
+			quit.addEventListener("click", () => {
+				location.href = "../select.html";
+			});
+			replay.addEventListener("click", () => {
+				window.location.reload();
+			});
+			
 		}, 1000);
 		return true;
 	}
