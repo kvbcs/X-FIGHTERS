@@ -25,7 +25,7 @@ playableCharacters.forEach((character) => {
 const addSelectCharacter = (character) => {
 	if (selectedCharacters[0] === character) {
 		playSfx("/assets/error-cta.mp3", 0.5);
-		return (fightCommentary.textContent = `You already chose ${character.name} !`);
+		return (fightCommentary.textContent = `Vous avez déjà choisi ${character.name} !`);
 	} else if (selectedCharacters.length >= 0) {
 		selectedCharacters = [];
 	}
@@ -37,13 +37,13 @@ const addSelectCharacter = (character) => {
 	let computerChoice = playableCharacters[randomIndex];
 
 	selectedCharacters.push(computerChoice);
-	fightCommentary.textContent = `You picked ${character.name}, AI picked ${computerChoice.name}`;
+	fightCommentary.textContent = `Vous avez pris ${character.name}, l'IA a pris ${computerChoice.name}`;
 };
 
 startBtn.addEventListener("click", () => {
 	if (selectedCharacters.length <= 0) {
 		playSfx("/assets/error-cta.mp3", 0.5);
-		return (fightCommentary.textContent = "Please choose a fighter !");
+		return (fightCommentary.textContent = "Choisissez un personnage !");
 	}
 	// Ajouter le type à chaque personnage
 	const charactersWithType = selectedCharacters.map((char) => {

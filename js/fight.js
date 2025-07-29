@@ -33,10 +33,10 @@ const enemy = selectedCharacters[1];
 const randomTurn = () => {
 	let random = Math.floor(Math.random() * 2) + 1;
 	if (random === 1) {
-		fightCommentary.textContent = `It's ${player.name}'s turn !`;
+		fightCommentary.textContent = `Au tour de ${player.name} !`;
 		return true;
 	} else {
-		fightCommentary.textContent = `It's ${enemy.name}'s turn !`;
+		fightCommentary.textContent = `Au tour de ${enemy.name} !`;
 		return false;
 	}
 };
@@ -75,13 +75,13 @@ const checkGameOver = () => {
 		const winner =
 			//Si les 2 sont à 0, personne gagne
 			player.health <= 0 && enemy.health <= 0
-				? "Nobody"
+				? "Personne"
 				: //Si l'ennemi est à 0 et pas le joueur, joueur gagne
 				player.health > 0 && enemy.health <= 0
 				? player.name
 				: //Sinon, l'ennemi
 				  enemy.name;
-		if (winner === "Nobody") {
+		if (winner === "Personne") {
 			if (score > 0) {
 				score--;
 			}
@@ -100,19 +100,19 @@ const checkGameOver = () => {
 		}
 		localStorage.setItem("score", score);
 		scoreText.textContent = score;
-		fightCommentary.textContent = `${winner} wins the fight!`;
+		fightCommentary.textContent = `${winner} gagne le combat !`;
 		attackBtn.style.display = "none";
 		healBtn.style.display = "none";
 		magicBtn.style.display = "none";
 
 		setTimeout(() => {
 			let again = prompt(
-				"Do you want to play again? (yes/no)"
+				"Voulez-vous rejouer ?"
 			).toLowerCase();
-			while (again !== "yes" && again !== "no") {
-				again = prompt("Please type 'yes' or 'no':").toLowerCase();
+			while (again !== "oui" && again !== "non") {
+				again = prompt("Ecrivez 'oui' ou 'non'").toLowerCase();
 			}
-			if (again === "yes") {
+			if (again === "oui") {
 				location.reload();
 			} else {
 				location.href = "/select.html";

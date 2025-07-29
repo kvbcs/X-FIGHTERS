@@ -13,31 +13,31 @@ class Character {
 		const criticalHit = getRandomItem(hitChance);
 		const attackValue = this.strength * criticalHit;
 		target.health -= attackValue;
-		fightCommentary.textContent = `${this.name} attacks ! ${target.name} lost ${attackValue} HP !`;
+		fightCommentary.textContent = `${this.name} attaque ! ${target.name} a perdu ${attackValue} PV !`;
 	}
 	heal() {
 		const criticalHit = getRandomItem(hitChance);
 		if (this.magic < healed) {
-			return (fightCommentary.textContent = `${this.name} has not enough magic left !`);
+			return (fightCommentary.textContent = `${this.name} n'a plus assez de Magie !`);
 		}
 		if (this.health >= this.maxHealth) {
-			return (fightCommentary.textContent = `${player.name}'s health is already maxed !`);
+			return (fightCommentary.textContent = `${player.name} a déjà la vie pleine !`);
 		}
 		const healValue = healed * criticalHit;
 		this.health += healValue;
 		this.magic -= healed;
-		fightCommentary.textContent = `${this.name} healed ${healValue} HP and lost ${healed} MP !`;
+		fightCommentary.textContent = `${this.name} a soigné ${healValue} PV et perdu ${healed} Magie !`;
 	}
 
 	magicAttack(target) {
 		const criticalHit = getRandomItem(hitChance);
 		if (this.magic < spell) {
-			return (fightCommentary.textContent = `${this.name} doesn’t have enough magic!`);
+			return (fightCommentary.textContent = `${this.name} n'a plus assez de Magie !`);
 		}
 		const spellValue = spell * criticalHit;
 		this.magic -= spell;
 		target.health -= spellValue;
-		fightCommentary.textContent = `${this.name} used magic ! ${target.name} lost ${spellValue} HP !`;
+		fightCommentary.textContent = `${this.name} utilise de la magie ! ${target.name} a perdu ${spellValue} PV !`;
 	}
 }
 class Mage extends Character {
